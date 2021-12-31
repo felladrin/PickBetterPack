@@ -1,0 +1,10 @@
+tasks:
+  - name: Dev Server
+    init: npm i -g pnpm && pnpm i
+    command: npm run dev
+
+ports:
+  - port: 3000
+    onOpen: open-preview
+    name: Vite
+    description: Vite Dev Server
