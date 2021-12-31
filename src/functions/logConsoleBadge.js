@@ -1,6 +1,8 @@
 import packageJson from "../../package.json";
 
 export function logConsoleBadge() {
+  const repositoryShortLink = "https://git.io/Jy55I";
+  
   if (navigator.userAgent.toLowerCase().indexOf("chrome") > -1) {
     const consoleCss = {
       separator: "background: #603515; padding:5px 0;",
@@ -8,7 +10,7 @@ export function logConsoleBadge() {
     };
     console.log(
       ...[
-        `\n %c %c PickBetterPack ${packageJson.version} %c %c By Felladrin %c \n`,
+        `\n %c %c PickBetterPack ${packageJson.version} %c %c ${repositoryShortLink} %c \n`,
         consoleCss.separator,
         consoleCss.text,
         consoleCss.separator,
@@ -17,6 +19,6 @@ export function logConsoleBadge() {
       ]
     );
   } else if (console) {
-    console.log(`PickBetterPack ${packageJson.version} | By Felladrin`);
+    console.log(`PickBetterPack ${packageJson.version} | ${repositoryShortLink}`);
   }
 }
