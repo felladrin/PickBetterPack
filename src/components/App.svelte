@@ -1,0 +1,56 @@
+<script>
+  import PackageJsonTextArea from "./PackageJsonTextArea.svelte";
+  import DependenciesTable from "./DependenciesTable.svelte";
+  import Dropzone from "./Dropzone.svelte";
+  import FeedbackButton from "./buttons/FeedbackButton.svelte";
+  import { afterUpdate } from "svelte";
+  import { lazyLoad } from "../constants/lazyLoad";
+
+  afterUpdate(() => lazyLoad.update());
+</script>
+
+<Dropzone />
+<div class="page-wrapper">
+  <div class="sticky-alerts" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <div class="container-fluid">
+        <div class="row m-20">
+          <div class="col-md">
+            <div class="content text-center">
+              <a href={import.meta.env.BASE_URL}>
+                <img
+                  data-src="/images/logo-light-mode.png"
+                  alt="PickBetterPack Logo"
+                  class="img-fluid hidden-dm lazy"
+                />
+                <img
+                  data-src="/images/logo-dark-mode.png"
+                  alt="PickBetterPack Logo"
+                  class="img-fluid hidden-lm lazy"
+                />
+              </a>
+              <div>
+                <span>
+                  Discover similar packages from your
+                  <em>package.json</em> dependencies.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <PackageJsonTextArea />
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row m-20">
+          <div class="col-md">
+            <DependenciesTable />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<FeedbackButton />

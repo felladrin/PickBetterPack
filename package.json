@@ -1,0 +1,38 @@
+{
+  "name": "pickbetterpack",
+  "version": "1.8.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "5.15.4",
+    "@fortawesome/free-solid-svg-icons": "5.15.4",
+    "djb2a": "2.0.0",
+    "halfmoon": "1.1.1",
+    "intro.js": "4.3.0",
+    "ky": "0.28.7",
+    "p-limit": "4.0.0",
+    "p-memoize": "6.0.1",
+    "package-license-types": "1.0.1",
+    "random-item": "4.0.1",
+    "s-ago": "2.2.0",
+    "strip-json-comments": "4.0.0",
+    "svelte-fa": "2.4.0",
+    "unique-random-array": "3.0.0",
+    "vanilla-lazyload": "17.5.0",
+    "winbox": "0.2.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.33",
+    "@types/halfmoon": "1.0.2",
+    "@types/intro.js": "3.0.2",
+    "@types/winbox": "0.2.1",
+    "svelte": "3.44.3",
+    "vite": "2.7.10"
+  }
+}
