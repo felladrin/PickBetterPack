@@ -1,13 +1,11 @@
 <script>
+  import PackageOnNpmWithoutDetails from "./PackageOnNpmWithoutDetails.svelte";
+  import PackageLoadingProgressBar from "./PackageLoadingProgressBar.svelte";
+  import NoSimilarPackagesSummary from "./NoSimilarPackagesSummary.svelte";
   import PackageDetails from "./PackageDetails.svelte";
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { getSimilarPackagesNames } from "../functions/getSimilarPackagesNames";
   import { fetchPackage } from "../functions/fetchPackage";
-  import { handleImageError } from "../functions/handleImageError";
-  import { afterUpdate } from "svelte";
-  import { lazyLoad } from "../constants/lazyLoad";
-
-  afterUpdate(() => lazyLoad.update());
 </script>
 
 {#if Object.keys($dependenciesFromPackage).length > 0}
@@ -26,41 +24,12 @@
               <tr>
                 <td>
                   {#await fetchPackage(dependencyName)}
-                    <div class="progress">
-                      <div
-                        class="progress-bar progress-bar-animated"
-                        role="progressbar"
-                        style={`width: 100%`}
-                      />
-                    </div>
+                    <PackageLoadingProgressBar />
                   {:then packageResult}
                     {#if packageResult.hasOwnProperty("error")}
-                      <details class="collapse-panel">
-                        <summary class="collapse-header">
-                          <div class="container-fluid">
-                            <div class="row">
-                              <div
-                                class="col text-left text-truncate d-inline-block w-200"
-                              >
-                                <strong>{dependencyName}</strong>
-                              </div>
-                            </div>
-                          </div>
-                        </summary>
-                        <div class="collapse-content">
-                          <a
-                            target="_blank"
-                            href={`https://www.npmjs.com/package/${dependencyName}`}
-                          >
-                            <img
-                              on:error={handleImageError}
-                              data-src={`https://badgen.net/npm/v/${dependencyName}`}
-                              alt="NPM Page"
-                              class="lazy"
-                            />
-                          </a>
-                        </div>
-                      </details>
+                      <PackageOnNpmWithoutDetails
+                        packageName={dependencyName}
+                      />
                     {:else if !packageResult}
                       <summary class="collapse-header">
                         <strong>{dependencyName}</strong> was not found on NPM.
@@ -69,43 +38,12 @@
                       <PackageDetails packageSearchResult={packageResult} />
                     {/if}
                   {:catch}
-                    <details class="collapse-panel">
-                      <summary class="collapse-header">
-                        <div class="container-fluid">
-                          <div class="row">
-                            <div
-                              class="col text-left text-truncate d-inline-block w-200"
-                            >
-                              <strong>{dependencyName}</strong>
-                            </div>
-                          </div>
-                        </div>
-                      </summary>
-                      <div class="collapse-content">
-                        <a
-                          target="_blank"
-                          href={`https://www.npmjs.com/package/${dependencyName}`}
-                        >
-                          <img
-                            on:error={handleImageError}
-                            data-src={`https://badgen.net/npm/v/${dependencyName}`}
-                            alt="NPM Page"
-                            class="lazy"
-                          />
-                        </a>
-                      </div>
-                    </details>
+                    <PackageOnNpmWithoutDetails packageName={dependencyName} />
                   {/await}
                 </td>
                 <td>
                   {#await getSimilarPackagesNames(dependencyName)}
-                    <div class="progress">
-                      <div
-                        class="progress-bar progress-bar-animated"
-                        role="progressbar"
-                        style={`width: 100%`}
-                      />
-                    </div>
+                    <PackageLoadingProgressBar />
                   {:then searchResult}
                     <div class="collapse-group">
                       {#each searchResult.slice(0, 5) as similarPackageName}
@@ -117,15 +55,11 @@
                           <PackageDetails packageSearchResult={packageInfo} />
                         {/await}
                       {:else}
-                        <summary class="collapse-header">
-                          No similar packages found.
-                        </summary>
+                        <NoSimilarPackagesSummary />
                       {/each}
                     </div>
                   {:catch}
-                    <summary class="collapse-header">
-                      No similar packages found.
-                    </summary>
+                    <NoSimilarPackagesSummary />
                   {/await}
                 </td>
               </tr>
