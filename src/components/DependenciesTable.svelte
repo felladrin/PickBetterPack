@@ -26,14 +26,14 @@
                   {#await fetchPackage(dependencyName)}
                     <PackageLoadingProgressBar />
                   {:then packageResult}
-                    {#if packageResult.hasOwnProperty("error")}
-                      <PackageOnNpmWithoutDetails
-                        packageName={dependencyName}
-                      />
-                    {:else if !packageResult}
+                    {#if !packageResult}
                       <summary class="collapse-header">
                         <strong>{dependencyName}</strong> was not found on NPM.
                       </summary>
+                    {:else if packageResult.hasOwnProperty("error")}
+                      <PackageOnNpmWithoutDetails
+                        packageName={dependencyName}
+                      />
                     {:else}
                       <PackageDetails packageSearchResult={packageResult} />
                     {/if}
