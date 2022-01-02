@@ -1,6 +1,6 @@
 tasks:
   - name: Dev Server
-    init: npm i -g pnpm && pnpm i
+    init: npm i
     command: npm run dev
 
 ports:
