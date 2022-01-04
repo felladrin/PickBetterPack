@@ -6,6 +6,9 @@
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { getSimilarPackagesNames } from "../functions/getSimilarPackagesNames";
   import { fetchPackage } from "../functions/fetchPackage";
+
+  const similarPackagesToDisplayPerBatch = 5;
+  let dependencyPerSimilarPackagesDisplayedMap = {};
 </script>
 
 {#if Object.keys($dependenciesFromPackage).length > 0}
@@ -46,7 +49,7 @@
                     <PackageLoadingProgressBar />
                   {:then searchResult}
                     <div class="collapse-group">
-                      {#each searchResult.slice(0, 5) as similarPackageName}
+                      {#each searchResult.slice(0, dependencyPerSimilarPackagesDisplayedMap[dependencyName] ?? similarPackagesToDisplayPerBatch) as similarPackageName}
                         {#await fetchPackage(similarPackageName)}
                           <summary class="collapse-header">
                             <strong>{similarPackageName}</strong>
@@ -58,6 +61,22 @@
                         <NoSimilarPackagesSummary />
                       {/each}
                     </div>
+                    {#if (dependencyPerSimilarPackagesDisplayedMap[dependencyName] ?? similarPackagesToDisplayPerBatch) < searchResult.length}
+                      <button
+                        class="btn btn-sm btn-block"
+                        type="button"
+                        on:click={() =>
+                          (dependencyPerSimilarPackagesDisplayedMap[
+                            dependencyName
+                          ] =
+                            (dependencyPerSimilarPackagesDisplayedMap[
+                              dependencyName
+                            ] ?? similarPackagesToDisplayPerBatch) +
+                            similarPackagesToDisplayPerBatch)}
+                      >
+                        Show More
+                      </button>
+                    {/if}
                   {:catch}
                     <NoSimilarPackagesSummary />
                   {/await}
@@ -70,3 +89,9 @@
     </table>
   </div>
 {/if}
+
+<style>
+  td {
+    width: 50%;
+  }
+</style>
