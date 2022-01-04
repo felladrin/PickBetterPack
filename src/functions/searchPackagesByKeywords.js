@@ -12,7 +12,7 @@ export const searchPackagesByKeywords = memoizePromise(
       npmsApi
         .get("search", {
           searchParams: {
-            q: "keywords:" + keywords.slice(0, 10).join(","),
+            q: `keywords:${keywords.slice(0, 10).join(",")} not:deprecated`,
           },
         })
         .json()
