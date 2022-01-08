@@ -2,9 +2,10 @@
   import PackageJsonTextArea from "./PackageJsonTextArea.svelte";
   import DependenciesTable from "./DependenciesTable.svelte";
   import Dropzone from "./Dropzone.svelte";
-  import FeedbackButton from "./buttons/FeedbackButton.svelte";
+  import FloatingSideButtons from "./buttons/FloatingSideButtons.svelte";
   import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
+  import packageJson from "../../package.json";
 
   afterUpdate(() => lazyLoad.update());
 </script>
@@ -18,7 +19,10 @@
         <div class="row m-20">
           <div class="col-md">
             <div class="content text-center">
-              <a href={import.meta.env.BASE_URL}>
+              <a
+                href={import.meta.env.BASE_URL}
+                title="PickBetterPack v{packageJson.version}"
+              >
                 <img
                   data-src="/images/logo-light-mode.png"
                   alt="PickBetterPack Logo"
@@ -53,4 +57,4 @@
     </div>
   </div>
 </div>
-<FeedbackButton />
+<FloatingSideButtons />
