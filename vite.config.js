@@ -9,4 +9,9 @@ export default defineConfig({
       winbox: "winbox/src/js/winbox.js",
     },
   },
+  server: {
+    hmr: {
+      clientPort: process.env.GITPOD_WORKSPACE_ID ? 443 : undefined,
+    },
+  },
 });
