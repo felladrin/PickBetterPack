@@ -11,5 +11,5 @@
   class="btn btn-sm"
   role="button"
 >
-  <Fa icon={faNpm} />
+  <Fa icon={faNpm} size="2x" />
 </a>
