@@ -47,7 +47,7 @@
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">
-        <div class="col text-left text-truncate d-inline-block w-100">
+        <div class="col text-truncate d-inline-block w-300">
           <strong>{packageSearchResult.package.name}</strong>
           <span class="text-muted">
             {packageSearchResult.package.description}
@@ -57,7 +57,7 @@
     </div>
   </summary>
   <div class="collapse-content">
-    <div class="container-fluid">
+    <div class="container w-300">
       <div class="row">
         <div class="col text-center">
           <MonthlyDownloadsBadge
@@ -82,7 +82,7 @@
       </div>
       <div class="row">
         <div class="col d-flex justify-content-center">
-          <p class="w-300 text-wrap text-center">
+          <p class="text-wrap text-center">
             {#if packageSearchResult.package.links.repository && /github/i.test(packageSearchResult.package.links.repository)}
               <a
                 href={getGithubContributorsPageUrl(
