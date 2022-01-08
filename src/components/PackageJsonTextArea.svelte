@@ -94,7 +94,8 @@
 
 <textarea
   bind:value={packageJsonAsString}
-  class={`form-control h-full ${hasError ? "is-invalid" : ""}`}
+  class="form-control h-full"
+  class:is-invalid={hasError}
   autocomplete="off"
   autocorrect="off"
   autocapitalize="off"

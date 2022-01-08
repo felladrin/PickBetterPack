@@ -47,36 +47,10 @@
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">
-        <div class="col text-left text-truncate d-inline-block w-200">
+        <div class="col text-left text-truncate d-inline-block w-100">
           <strong>{packageSearchResult.package.name}</strong>
           <span class="text-muted">
-            {packageSearchResult.package.version}
-          </span>
-          <br />
-          <span class="text-muted">
             {packageSearchResult.package.description}
-          </span>
-        </div>
-        <div class="col text-right">
-          <span class="text-muted">
-            {formatToRelativeTime(new Date(packageSearchResult.package.date))}
-          </span>
-          <br />
-          <span class="text-muted">
-            {#if packageSearchResult.package.links.repository && /github/i.test(packageSearchResult.package.links.repository)}
-              <img
-                on:error={handleImageError}
-                data-src={getGithubContributorsImageUrl(
-                  packageSearchResult.package.links.repository,
-                  3
-                )}
-                alt="Contributors"
-                class="mr-5 lazy"
-                height="14"
-              />
-            {:else}
-              by {packageSearchResult.package.publisher.username}
-            {/if}
           </span>
         </div>
       </div>
@@ -131,6 +105,25 @@
               <br />
             {/if}
             {packageSearchResult.package.description}
+            <br />
+            <span class="badge-group mt-5" role="group">
+              <a
+                href="https://www.npmjs.com/package/{packageSearchResult.package
+                  .name}?activeTab=versions"
+                target="_blank"
+                class="badge badge-pill"
+                >v{packageSearchResult.package.version}
+              </a>
+              <a
+                href="https://www.npmjs.com/package/{packageSearchResult.package
+                  .name}?activeTab=versions"
+                target="_blank"
+                class="badge badge-pill"
+                >{formatToRelativeTime(
+                  new Date(packageSearchResult.package.date)
+                )}
+              </a>
+            </span>
           </p>
         </div>
       </div>
