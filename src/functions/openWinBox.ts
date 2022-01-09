@@ -1,5 +1,6 @@
-/** @param {import("winbox").Params} params */
-export async function openWinBox(params) {
+import type { Params } from "winbox";
+
+export async function openWinBox(params: Params) {
   const { default: WinBox } = await import("winbox");
 
   new WinBox({

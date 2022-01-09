@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { droppedPackageJsonContent } from "../stores/droppedPackageJsonContent";
 
   let dropZoneDisplayStyle = "none";
@@ -11,8 +11,7 @@
     dropZoneDisplayStyle = "none";
   }
 
-  /** @param {DataTransfer} dataTransfer */
-  function isValidDataTransfer(dataTransfer) {
+  function isValidDataTransfer(dataTransfer: DataTransfer) {
     return (
       dataTransfer.items?.length === 1 &&
       dataTransfer.items[0].kind === "file" &&
@@ -20,21 +19,18 @@
     );
   }
 
-  /** @param {DragEvent} dragEvent */
-  function handleDragEnter(dragEvent) {
+  function handleDragEnter(dragEvent: DragEvent) {
     if (isValidDataTransfer(dragEvent.dataTransfer)) {
       showDropZone();
     }
   }
 
-  /** @param {DragEvent} dragEvent */
-  function allowDrag(dragEvent) {
+  function allowDrag(dragEvent: DragEvent) {
     dragEvent.preventDefault();
     dragEvent.dataTransfer.dropEffect = "copy";
   }
 
-  /** @param {DragEvent} dragEvent */
-  function handleDrop(dragEvent) {
+  function handleDrop(dragEvent: DragEvent) {
     if (isValidDataTransfer(dragEvent.dataTransfer)) {
       dragEvent.preventDefault();
 

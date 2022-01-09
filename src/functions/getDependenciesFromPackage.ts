@@ -1,5 +1,4 @@
-/** @param {{}} packageObject */
-export function getDependenciesFromPackage(packageObject) {
+export function getDependenciesFromPackage(packageObject: Record<string, any>) {
   return Object.keys(packageObject)
     .filter((property) => property.toLowerCase().includes("dependencies"))
     .reduce(

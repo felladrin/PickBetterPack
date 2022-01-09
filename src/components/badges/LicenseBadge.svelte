@@ -1,5 +1,5 @@
-<script>
-  import { fetchPackage } from "../../functions/fetchPackage";
+<script lang="ts">
+  import { analyzePackage } from "../../functions/analyzePackage";
   import { handleImageError } from "../../functions/handleImageError";
   import { openWinBox } from "../../functions/openWinBox";
   import { afterUpdate } from "svelte";
@@ -8,22 +8,20 @@
   export let packageName = "npm";
 
   afterUpdate(() => lazyLoad.update());
-</script>
 
-<a
-  href="https://spdx.org/licenses"
-  title="Click to read about this license"
-  target="_blank"
-  on:click|preventDefault={async ({ currentTarget }) => {
+  async function handleClick({
+    currentTarget,
+  }: {
+    currentTarget: EventTarget & HTMLAnchorElement;
+  }) {
     try {
       const { default: packageLicenseTypes } = await import(
         "package-license-types"
       );
 
-      const packageManifest = await fetchPackage(packageName);
+      const packageAnalysis = await analyzePackage(packageName);
 
-      /** @type string[] */
-      const licenses = packageLicenseTypes(packageManifest);
+      const licenses = packageLicenseTypes(packageAnalysis.collected.metadata);
 
       if (licenses.length === 0) throw new Error();
 
@@ -39,7 +37,14 @@
         title: "Licenses",
       });
     }
-  }}
+  }
+</script>
+
+<a
+  href="https://spdx.org/licenses"
+  title="Click to read about this license"
+  target="_blank"
+  on:click|preventDefault={handleClick}
 >
   <img
     on:error={handleImageError}

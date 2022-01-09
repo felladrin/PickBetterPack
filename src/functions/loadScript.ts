@@ -1,8 +1,4 @@
-/**
- * @param {string} src
- * @param {() => void} callback
- */
-export function loadScript(src, callback) {
+export function loadScript(src: string, callback: () => void) {
   const scriptElement = document.createElement("script");
   scriptElement.src = src;
   scriptElement.onload = callback;

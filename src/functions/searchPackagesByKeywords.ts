@@ -1,13 +1,10 @@
 import memoizePromise from "p-memoize";
 import { npmsApi } from "../constants/npmsApi";
 import { limitNpmsApiCallsConcurrency } from "./limitNpmsApiCallsConcurrency";
+import type { SearchResponse } from "../types/npms";
 
 export const searchPackagesByKeywords = memoizePromise(
-  /**
-   * @param {string[]} keywords
-   * @returns {Promise<import("../types/npms").SearchResponse>}
-   */
-  async (keywords) =>
+  async (keywords: string[]) =>
     limitNpmsApiCallsConcurrency(async () =>
       npmsApi
         .get("search", {
@@ -15,6 +12,6 @@ export const searchPackagesByKeywords = memoizePromise(
             q: `keywords:${keywords.slice(0, 10).join(",")} not:deprecated`,
           },
         })
-        .json()
+        .json<SearchResponse>()
     )
 );
