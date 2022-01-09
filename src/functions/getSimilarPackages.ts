@@ -2,6 +2,7 @@ import { extractKeywords } from "./extractKeywords";
 import { fetchPackage } from "./fetchPackage";
 import { searchPackagesByKeywords } from "./searchPackagesByKeywords";
 import { searchPackagesByTerms } from "./searchPackagesByTerms";
+import type { SearchResult } from "../types/npms";
 
 export async function getSimilarPackages(packageName = "") {
   const packageSearchResult = await fetchPackage(packageName);
@@ -38,8 +39,7 @@ export async function getSimilarPackages(packageName = "") {
     mostRelevantKeywordsResults.includes(keywordToSearchResultMap.get(keyword))
   );
 
-  /** @type string[] */
-  let extractedTerms = [];
+  let extractedTerms = [] as string[];
 
   const packageDescription = packageSearchResult.package.description;
 
@@ -112,10 +112,12 @@ export async function getSimilarPackages(packageName = "") {
 
   searchResponses = [...searchResponses, ...extractedTermsSearchResponses];
 
-  /** @type {import("../types/npms").SearchResult[]} */
   const mergedSearchResults = searchResponses
     .filter((result) => result.total >= 5)
-    .reduce((results, current) => [...results, ...(current.results ?? [])], []);
+    .reduce<SearchResult[]>(
+      (results, current) => [...results, ...(current.results ?? [])],
+      []
+    );
 
   const filteredSearchResults = mergedSearchResults
     .filter(

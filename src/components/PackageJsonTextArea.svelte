@@ -22,7 +22,6 @@
     const hasUserChangedPackageJson = () =>
       getHashFromString(packageJsonAsString) !== packageJsonHash;
 
-    /** @type {import("../types/npms").Package} */
     const randomPackage1 = await getRandomPackage();
 
     if (hasUserChangedPackageJson()) return;
@@ -40,7 +39,6 @@
 
     packageJsonHash = getHashFromString(packageJsonAsString);
 
-    /** @type {import("../types/npms").Package} */
     const randomPackage2 = await getRandomPackage();
 
     if (hasUserChangedPackageJson()) return;

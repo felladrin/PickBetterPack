@@ -1217,17 +1217,11 @@ const whiteSpaces = /\s+/;
 const punctuation = /[!"#$%&'()*+,./:;<=>?@[\]^_`{|}~]/g;
 const composedOnlyOfAsciiCharacters = /^[\u0000-\u007f]*$/;
 
-/**
- * @param {string} currentKeyword
- * @param {number} currentKeywordIndex
- * @param {string[]} extractedKeywords
- * @returns {boolean}
- */
 function appearsOnlyOnceInArray(
-  currentKeyword,
-  currentKeywordIndex,
-  extractedKeywords
-) {
+  currentKeyword: string,
+  currentKeywordIndex: number,
+  extractedKeywords: string[]
+): boolean {
   return (
     extractedKeywords.findIndex((keyword) => keyword === currentKeyword) ===
     currentKeywordIndex

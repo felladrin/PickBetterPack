@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import LicenseBadge from "./badges/LicenseBadge.svelte";
   import MonthlyDownloadsBadge from "./badges/MonthlyDownloadsBadge.svelte";
   import TypesAvailabilityBadge from "./badges/TypesAvailabilityBadge.svelte";
@@ -14,9 +14,9 @@
   import RepositoryButton from "./buttons/RepositoryButton.svelte";
   import NpmButton from "./buttons/NpmButton.svelte";
   import RunkitButton from "./buttons/RunKitButton.svelte";
+  import type { SearchResult } from "../types/npms";
 
-  /** @type {import("../types/npms").SearchResult} */
-  export let packageSearchResult;
+  export let packageSearchResult: SearchResult;
 
   afterUpdate(() => lazyLoad.update());
 
@@ -158,17 +158,11 @@
                 currentTarget.select();
                 if (navigator.clipboard) {
                   copyTextToClipboard(currentTarget.value);
-                } else {
-                  currentTarget.setSelectionRange?.(
-                    0,
-                    currentTarget.value.length
-                  );
-                  document.execCommand("copy");
+                  halfmoon.initStickyAlert({
+                    title: "Copied to clipboard!",
+                    content: currentTarget.value,
+                  });
                 }
-                halfmoon.initStickyAlert({
-                  title: "Copied to clipboard!",
-                  content: currentTarget.value,
-                });
               }}
               autocomplete="off"
               autocorrect="off"

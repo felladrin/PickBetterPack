@@ -1,5 +1,4 @@
 <script>
-  import { fetchPackage } from "../../functions/fetchPackage";
   import { handleImageError } from "../../functions/handleImageError";
   import { openWinBox } from "../../functions/openWinBox";
   import { afterUpdate } from "svelte";
@@ -14,25 +13,7 @@
   href="https://www.jsdocs.io/package/{packageName}#package-index"
   target="_blank"
   on:click|preventDefault={async ({ currentTarget }) => {
-    const packageManifest = await fetchPackage(packageName);
-
-    let url = currentTarget.href;
-
-    if (!packageManifest.types && !packageManifest.typings) {
-      try {
-        const packageTypesManifest = await fetchPackage(
-          `@types/${packageName}`
-        );
-        if (packageTypesManifest?.name) {
-          url = `https://www.jsdocs.io/package/${packageTypesManifest.name}#package-index`;
-        }
-      } catch {}
-    }
-
-    openWinBox({
-      url,
-      title: `${packageName}'s types`,
-    });
+    openWinBox({ url: currentTarget.href, title: `${packageName}'s types` });
   }}
 >
   <img
