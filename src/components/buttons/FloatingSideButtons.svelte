@@ -38,6 +38,7 @@
     class="btn"
     type="button"
     on:click={() => halfmoon.toggleDarkMode()}
+    data-test-id="toggle-dark-mode-button"
     data-toggle="tooltip"
     data-placement="right"
     data-title="Toggle Dark Mode"

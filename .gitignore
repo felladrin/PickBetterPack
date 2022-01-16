@@ -4,5 +4,6 @@
 /package-lock.json
 /pnpm-lock.yaml
 /yarn.lock
+/test-results/
 .DS_Store
 *.log
