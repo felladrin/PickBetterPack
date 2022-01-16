@@ -27,11 +27,13 @@
                   data-src="/images/logo-light-mode.png"
                   alt="PickBetterPack Logo"
                   class="img-fluid hidden-dm lazy"
+                  data-test-id="logo-light-mode"
                 />
                 <img
                   data-src="/images/logo-dark-mode.png"
                   alt="PickBetterPack Logo"
                   class="img-fluid hidden-lm lazy"
+                  data-test-id="logo-dark-mode"
                 />
               </a>
               <div>

@@ -43,7 +43,7 @@
   }
 </script>
 
-<details class="collapse-panel">
+<details class="collapse-panel" data-test-id="package-details">
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">

@@ -103,6 +103,7 @@
   data-title={tourConfig.title}
   data-intro={tourConfig.intro}
   data-position={tourConfig.position}
+  data-test-id="package-json-textarea"
 />
 
 <style>
