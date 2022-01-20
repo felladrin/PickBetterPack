@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "build-and-preview": "vite build && vite preview",
-    "test": "svelte-check && playwright test"
+    "test": "svelte-check && cross-env PW_EXPERIMENTAL_TS_ESM=1 playwright test"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "5.15.4",
@@ -35,6 +35,7 @@
     "@types/halfmoon": "1.0.2",
     "@types/intro.js": "3.0.2",
     "@types/winbox": "0.2.1",
+    "cross-env": "7.0.3",
     "playwright": "1.18.0",
     "svelte": "3.46.2",
     "svelte-check": "2.3.0",
