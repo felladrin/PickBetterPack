@@ -16,7 +16,7 @@ test("similar packages", async ({ page, baseURL }) => {
     )
   );
   await page.locator(".introjs-donebutton").click();
-  await page.locator("strong >> text=npm").first().waitFor();
+  await page.locator("strong", { hasText: "npm" }).first().waitFor();
   await page.locator("[data-test-id=package-details]").first().click();
   await page
     .locator("[data-test-id=package-details]")
@@ -35,7 +35,7 @@ test("similar packages", async ({ page, baseURL }) => {
     () =>
       document.querySelectorAll("[data-test-id=package-details]").length === 6
   );
-  await page.locator('button >> text="Show More"').click();
+  await page.locator("button", { hasText: "Show More" }).click();
   await page.waitForFunction(
     () =>
       document.querySelectorAll("[data-test-id=package-details]").length === 11
