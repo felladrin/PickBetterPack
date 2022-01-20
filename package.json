@@ -1,6 +1,6 @@
 {
   "name": "pickbetterpack",
-  "version": "1.20220120.19",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "license": "MIT",
@@ -36,6 +36,8 @@
     "@types/intro.js": "3.0.2",
     "@types/winbox": "0.2.1",
     "cross-env": "7.0.3",
+    "git-last-commit": "1.0.1",
+    "helper-git-hash": "1.0.0",
     "playwright": "1.18.0",
     "svelte": "3.46.2",
     "svelte-check": "2.3.0",

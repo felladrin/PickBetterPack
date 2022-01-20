@@ -5,7 +5,6 @@
   import FloatingSideButtons from "./buttons/FloatingSideButtons.svelte";
   import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
-  import packageJson from "../../package.json";
 
   afterUpdate(() => lazyLoad.update());
 </script>
@@ -21,7 +20,10 @@
             <div class="content text-center">
               <a
                 href={import.meta.env.BASE_URL}
-                title="PickBetterPack v{packageJson.version}"
+                title="PickBetterPack · Commit {process.env
+                  .COMMIT_SHORT_HASH} · {new Date(
+                  process.env.BUILD_DATE_TIME
+                ).toLocaleString()}"
               >
                 <img
                   data-src="/images/logo-light-mode.png"
