@@ -1,4 +1,5 @@
-import { PlaywrightTestConfig, devices } from "@playwright/test";
+import type { PlaywrightTestConfig } from "@playwright/test";
+import {  devices } from "@playwright/test";
 
 export default {
   forbidOnly: !!process.env.CI,
