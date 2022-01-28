@@ -2,11 +2,10 @@ image: mcr.microsoft.com/playwright:focal
 
 tasks:
   - name: Dev Server
-    init: npm i
+    init: npm ci
     command: npm run dev
 
 ports:
-  - port: 3000
+  - name: Dev Server
+    port: 3000
     onOpen: open-preview
-    name: Vite
-    description: Vite Dev Server
