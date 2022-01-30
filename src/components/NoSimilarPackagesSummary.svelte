@@ -1,1 +1,7 @@
-<summary class="collapse-header">No similar packages found.</summary>
+<script>
+  import { getTranslation, TranslationId } from "../modules/translations";
+</script>
+
+<summary class="collapse-header">
+  {getTranslation(TranslationId.NoSimilarPackagesFound)}
+</summary>

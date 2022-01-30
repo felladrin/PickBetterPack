@@ -4,6 +4,7 @@
   import { faGithub } from "@fortawesome/free-brands-svg-icons";
   import { openWinBox } from "../../functions/openWinBox";
   import halfmoon from "halfmoon";
+  import { getTranslation, TranslationId } from "../../modules/translations";
 </script>
 
 <div class="btn-group-vertical btn-group-sm floating-side-buttons" role="group">
@@ -17,8 +18,8 @@
       })}
     data-toggle="tooltip"
     data-placement="right"
-    data-title="Send Feedback Anonymously"
-    aria-label="Send Feedback Anonymously"
+    data-title={getTranslation(TranslationId.SendFeedbackAnonymously)}
+    aria-label={getTranslation(TranslationId.SendFeedbackAnonymously)}
   >
     <Fa icon={faCommentDots} />
   </button>
@@ -29,8 +30,8 @@
     role="button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title="Project on GitHub"
-    aria-label="Project on GitHub"
+    data-title={getTranslation(TranslationId.ProjectOnGitHub)}
+    aria-label={getTranslation(TranslationId.ProjectOnGitHub)}
   >
     <Fa icon={faGithub} />
   </a>
@@ -41,8 +42,8 @@
     data-test-id="toggle-dark-mode-button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title="Toggle Dark Mode"
-    aria-label="Toggle Dark Mode"
+    data-title={getTranslation(TranslationId.ToggleDarkMode)}
+    aria-label={getTranslation(TranslationId.ToggleDarkMode)}
   >
     <Fa icon={faMoon} />
   </button>

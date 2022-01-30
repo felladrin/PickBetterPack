@@ -15,6 +15,7 @@
   import NpmButton from "./buttons/NpmButton.svelte";
   import RunkitButton from "./buttons/RunKitButton.svelte";
   import type { SearchResult } from "../types/npms";
+  import { getTranslation, TranslationId } from "../modules/translations";
 
   export let packageSearchResult: SearchResult;
 
@@ -159,7 +160,7 @@
                 if (navigator.clipboard) {
                   copyTextToClipboard(currentTarget.value);
                   halfmoon.initStickyAlert({
-                    title: "Copied to clipboard!",
+                    title: getTranslation(TranslationId.CopiedToClipboard),
                     content: currentTarget.value,
                   });
                 }

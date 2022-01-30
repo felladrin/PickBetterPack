@@ -1,5 +1,7 @@
 <script>
+  import pupa from "pupa";
   import { openWinBox } from "../../functions/openWinBox";
+  import { getTranslation, TranslationId } from "../../modules/translations";
 
   export let packageName = "npm";
 </script>
@@ -10,8 +12,10 @@
   on:click={() =>
     openWinBox({
       url: `https://runkit-packages.com/16.x.x/${Date.now()}/${packageName}`,
-      title: `${packageName}'s readme`,
+      title: pupa(getTranslation(TranslationId.ReadmeFromPackage), {
+        packageName,
+      }),
     })}
 >
-  Open Readme
+  {getTranslation(TranslationId.OpenReadme)}
 </button>

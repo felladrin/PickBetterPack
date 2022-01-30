@@ -6,6 +6,7 @@
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { getSimilarPackagesNames } from "../functions/getSimilarPackagesNames";
   import { fetchPackage } from "../functions/fetchPackage";
+  import { getTranslation, TranslationId } from "../modules/translations";
 
   const similarPackagesToDisplayPerBatch = 5;
   let dependencyPerSimilarPackagesDisplayedMap = {};
@@ -16,8 +17,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="text-center">Installed</th>
-          <th class="text-center">Similar</th>
+          <th class="text-center">{getTranslation(TranslationId.Installed)}</th>
+          <th class="text-center">{getTranslation(TranslationId.Similar)}</th>
         </tr>
       </thead>
       <tbody>
@@ -74,7 +75,7 @@
                             ] ?? similarPackagesToDisplayPerBatch) +
                             similarPackagesToDisplayPerBatch)}
                       >
-                        Show More
+                        {getTranslation(TranslationId.ShowMore)}
                       </button>
                     {/if}
                   {:catch}
