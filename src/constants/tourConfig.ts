@@ -1,6 +1,7 @@
+import { getTranslation, TranslationId } from "../modules/translations";
+
 export const tourConfig = {
-  title: "Your package.json",
-  intro:
-    "Paste or drop here your package.json to get suggestions for each dependency!",
+  title: getTranslation(TranslationId.TourTitle),
+  intro: getTranslation(TranslationId.TourIntro),
   position: "bottom",
 };

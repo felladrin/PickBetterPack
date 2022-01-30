@@ -5,6 +5,7 @@
   import FloatingSideButtons from "./buttons/FloatingSideButtons.svelte";
   import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
+  import { getTranslation, TranslationId } from "../modules/translations";
 
   afterUpdate(() => lazyLoad.update());
 </script>
@@ -40,8 +41,7 @@
               </a>
               <div>
                 <span>
-                  Discover similar packages from your
-                  <em>package.json</em> dependencies.
+                  {@html getTranslation(TranslationId.AppDescription)}
                 </span>
               </div>
             </div>
