@@ -9,8 +9,9 @@
       <h5 class="modal-title">{$t("languageSelection")}</h5>
       <select class="form-control" bind:value={$locale}>
         {#each $locales as localeCode}
-          <option value={localeCode}>{ISO6391.getNativeName(localeCode)}</option
-          >
+          <option value={localeCode}>
+            {ISO6391.getNativeName(localeCode)}
+          </option>
         {/each}
       </select>
       <div class="text-right mt-20">
