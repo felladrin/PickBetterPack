@@ -3,7 +3,7 @@
   import {
     faCommentDots,
     faMoon,
-    faGlobe,
+    faLanguage,
   } from "@fortawesome/free-solid-svg-icons";
   import { faGithub } from "@fortawesome/free-brands-svg-icons";
   import { openWinBox } from "../../functions/openWinBox";
@@ -21,7 +21,7 @@
     data-title={$t("languageSelection")}
     aria-label={$t("languageSelection")}
   >
-    <Fa icon={faGlobe} />
+    <Fa icon={faLanguage} />
   </button>
   <button
     class="btn"
