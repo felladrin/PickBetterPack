@@ -1,27 +1,27 @@
-import { waitLocale } from "svelte-i18n";
-import { register, init } from "svelte-i18n";
+import { waitLocale, register, init } from "svelte-i18n";
 import getPreferredLocale from "preferred-locale";
 
-export async function loadLocale() {
-  const translatedLocales = ["en", "pt", "es"];
+const localeLoader = import.meta.glob("../locales/*.json");
 
-  const preferredLocale = getPreferredLocale(
-    translatedLocales,
-    translatedLocales[0],
-    {
-      regionLowerCase: true,
-      languageOnly: true,
-    }
+export async function loadLocale() {
+  const translatedLocales = Object.keys(localeLoader).map(
+    (localePath) =>
+      localePath.match(new RegExp("../locales/(?<locale>.*).json")).groups
+        .locale
   );
 
-  for (const locale of translatedLocales) {
-    register(locale, () => import(`../locales/${locale}.json`));
-  }
+  translatedLocales.forEach((locale) =>
+    register(locale, localeLoader[`../locales/${locale}.json`])
+  );
 
-  init({
-    fallbackLocale: translatedLocales[0],
-    initialLocale: preferredLocale,
+  const fallbackLocale = "en";
+
+  const initialLocale = getPreferredLocale(translatedLocales, fallbackLocale, {
+    regionLowerCase: true,
+    languageOnly: true,
   });
+
+  init({ fallbackLocale, initialLocale });
 
   return waitLocale();
 }
