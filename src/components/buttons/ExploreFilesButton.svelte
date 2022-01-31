@@ -11,8 +11,8 @@
   on:click={() =>
     openWinBox({
       url: `https://www.runpkg.com/?${packageName}/`,
-      title: $t("files-from-package", { values: { packageName } }),
+      title: $t("filesFromPackage", { values: { packageName } }),
     })}
 >
-  {$t("explore-files")}
+  {$t("exploreFiles")}
 </button>

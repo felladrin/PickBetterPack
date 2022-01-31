@@ -160,7 +160,7 @@
                 if (navigator.clipboard) {
                   copyTextToClipboard(currentTarget.value);
                   halfmoon.initStickyAlert({
-                    title: $t("copied-to-clipboard"),
+                    title: $t("copiedToClipboard"),
                     content: currentTarget.value,
                   });
                 }

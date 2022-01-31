@@ -101,8 +101,8 @@
   spellcheck="false"
   data-gramm="false"
   wrap="off"
-  data-title={$t("tour-title")}
-  data-intro={$t("tour-intro")}
+  data-title={$t("tourTitle")}
+  data-intro={$t("tourIntro")}
   data-position="bottom"
   data-test-id="package-json-textarea"
 />

@@ -18,8 +18,8 @@
     on:click={() => halfmoon.toggleModal("modal-language")}
     data-toggle="tooltip"
     data-placement="right"
-    data-title={$t("language-selection")}
-    aria-label={$t("language-selection")}
+    data-title={$t("languageSelection")}
+    aria-label={$t("languageSelection")}
   >
     <Fa icon={faGlobe} />
   </button>
@@ -33,8 +33,8 @@
       })}
     data-toggle="tooltip"
     data-placement="right"
-    data-title={$t("send-feedback-anonymously")}
-    aria-label={$t("send-feedback-anonymously")}
+    data-title={$t("sendFeedbackAnonymously")}
+    aria-label={$t("sendFeedbackAnonymously")}
   >
     <Fa icon={faCommentDots} />
   </button>
@@ -45,8 +45,8 @@
     role="button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title={$t("project-on-git-hub")}
-    aria-label={$t("project-on-git-hub")}
+    data-title={$t("projectOnGithub")}
+    aria-label={$t("projectOnGithub")}
   >
     <Fa icon={faGithub} />
   </a>
@@ -57,8 +57,8 @@
     data-test-id="toggle-dark-mode-button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title={$t("toggle-dark-mode")}
-    aria-label={$t("toggle-dark-mode")}
+    data-title={$t("toggleDarkMode")}
+    aria-label={$t("toggleDarkMode")}
   >
     <Fa icon={faMoon} />
   </button>

@@ -3,5 +3,5 @@
 </script>
 
 <summary class="collapse-header">
-  {$t("no-similar-packages-found")}
+  {$t("noSimilarPackagesFound")}
 </summary>

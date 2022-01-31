@@ -32,7 +32,7 @@
                   {:then packageResult}
                     {#if !packageResult}
                       <summary class="collapse-header">
-                        {@html $t("dependency-not-found-on-npm", {
+                        {@html $t("dependencyNotFoundOnNpm", {
                           values: { dependencyName },
                         })}
                       </summary>
@@ -77,7 +77,7 @@
                             ] ?? similarPackagesToDisplayPerBatch) +
                             similarPackagesToDisplayPerBatch)}
                       >
-                        {$t("show-more")}
+                        {$t("showMore")}
                       </button>
                     {/if}
                   {:catch}
