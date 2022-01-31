@@ -6,7 +6,7 @@
 <div class="modal" id="modal-language" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h5 class="modal-title">{$t("language-selection")}</h5>
+      <h5 class="modal-title">{$t("languageSelection")}</h5>
       <select class="form-control" bind:value={$locale}>
         {#each $locales as localeCode}
           <option value={localeCode}>{ISO6391.getNativeName(localeCode)}</option

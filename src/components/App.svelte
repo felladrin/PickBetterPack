@@ -42,7 +42,7 @@
               </a>
               <div>
                 <span>
-                  {@html $t("app-description")}
+                  {@html $t("appDescription")}
                 </span>
               </div>
             </div>

@@ -11,8 +11,8 @@
   on:click={() =>
     openWinBox({
       url: `https://runkit-packages.com/16.x.x/${Date.now()}/${packageName}`,
-      title: $t("readme-from-package", { values: { packageName } }),
+      title: $t("readmeFromPackage", { values: { packageName } }),
     })}
 >
-  {$t("open-readme")}
+  {$t("openReadme")}
 </button>

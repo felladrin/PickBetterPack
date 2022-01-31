@@ -29,7 +29,7 @@
       licenses.forEach((licenseName) => {
         openWinBox({
           url: `https://spdx.org/licenses/${licenseName}.html#licenseText`,
-          title: $t("license-name", { values: { licenseName } }),
+          title: $t("licenseName", { values: { licenseName } }),
         });
       });
     } catch {
@@ -43,7 +43,7 @@
 
 <a
   href="https://spdx.org/licenses"
-  title={$t("click-to-read-about-license")}
+  title={$t("clickToReadAboutLicense")}
   target="_blank"
   on:click|preventDefault={handleClick}
 >
