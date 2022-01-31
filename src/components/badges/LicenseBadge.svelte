@@ -4,8 +4,7 @@
   import { openWinBox } from "../../functions/openWinBox";
   import { afterUpdate } from "svelte";
   import { lazyLoad } from "../../constants/lazyLoad";
-  import { getTranslation, TranslationId } from "../../modules/translations";
-  import pupa from "pupa";
+  import { t } from "svelte-i18n";
 
   export let packageName = "npm";
 
@@ -30,15 +29,13 @@
       licenses.forEach((licenseName) => {
         openWinBox({
           url: `https://spdx.org/licenses/${licenseName}.html#licenseText`,
-          title: pupa(getTranslation(TranslationId.LicenseName), {
-            licenseName,
-          }),
+          title: $t("license-name", { values: { licenseName } }),
         });
       });
     } catch {
       openWinBox({
         url: currentTarget.href,
-        title: getTranslation(TranslationId.Licenses),
+        title: $t("licenses"),
       });
     }
   }
@@ -46,14 +43,14 @@
 
 <a
   href="https://spdx.org/licenses"
-  title={getTranslation(TranslationId.ClickToReadAboutLicense)}
+  title={$t("click-to-read-about-license")}
   target="_blank"
   on:click|preventDefault={handleClick}
 >
   <img
     on:error={handleImageError}
     data-src="https://badgen.net/npm/license/{packageName}"
-    alt={getTranslation(TranslationId.License)}
+    alt={$t("license")}
     class="lazy"
   />
 </a>

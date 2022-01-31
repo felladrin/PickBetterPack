@@ -1,7 +1,7 @@
 <script>
-  import { getTranslation, TranslationId } from "../modules/translations";
+  import { t } from "svelte-i18n";
 </script>
 
 <summary class="collapse-header">
-  {getTranslation(TranslationId.NoSimilarPackagesFound)}
+  {$t("no-similar-packages-found")}
 </summary>

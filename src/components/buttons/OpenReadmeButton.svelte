@@ -1,7 +1,6 @@
 <script>
-  import pupa from "pupa";
+  import { t } from "svelte-i18n";
   import { openWinBox } from "../../functions/openWinBox";
-  import { getTranslation, TranslationId } from "../../modules/translations";
 
   export let packageName = "npm";
 </script>
@@ -12,10 +11,8 @@
   on:click={() =>
     openWinBox({
       url: `https://runkit-packages.com/16.x.x/${Date.now()}/${packageName}`,
-      title: pupa(getTranslation(TranslationId.ReadmeFromPackage), {
-        packageName,
-      }),
+      title: $t("readme-from-package", { values: { packageName } }),
     })}
 >
-  {getTranslation(TranslationId.OpenReadme)}
+  {$t("open-readme")}
 </button>

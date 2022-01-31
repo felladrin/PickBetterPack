@@ -1,13 +1,28 @@
 <script>
   import Fa from "svelte-fa";
-  import { faCommentDots, faMoon } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faCommentDots,
+    faMoon,
+    faGlobe,
+  } from "@fortawesome/free-solid-svg-icons";
   import { faGithub } from "@fortawesome/free-brands-svg-icons";
   import { openWinBox } from "../../functions/openWinBox";
   import halfmoon from "halfmoon";
-  import { getTranslation, TranslationId } from "../../modules/translations";
+  import { t } from "svelte-i18n";
 </script>
 
 <div class="btn-group-vertical btn-group-sm floating-side-buttons" role="group">
+  <button
+    class="btn"
+    type="button"
+    on:click={() => halfmoon.toggleModal("modal-language")}
+    data-toggle="tooltip"
+    data-placement="right"
+    data-title={$t("language-selection")}
+    aria-label={$t("language-selection")}
+  >
+    <Fa icon={faGlobe} />
+  </button>
   <button
     class="btn"
     type="button"
@@ -18,8 +33,8 @@
       })}
     data-toggle="tooltip"
     data-placement="right"
-    data-title={getTranslation(TranslationId.SendFeedbackAnonymously)}
-    aria-label={getTranslation(TranslationId.SendFeedbackAnonymously)}
+    data-title={$t("send-feedback-anonymously")}
+    aria-label={$t("send-feedback-anonymously")}
   >
     <Fa icon={faCommentDots} />
   </button>
@@ -30,8 +45,8 @@
     role="button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title={getTranslation(TranslationId.ProjectOnGitHub)}
-    aria-label={getTranslation(TranslationId.ProjectOnGitHub)}
+    data-title={$t("project-on-git-hub")}
+    aria-label={$t("project-on-git-hub")}
   >
     <Fa icon={faGithub} />
   </a>
@@ -42,8 +57,8 @@
     data-test-id="toggle-dark-mode-button"
     data-toggle="tooltip"
     data-placement="right"
-    data-title={getTranslation(TranslationId.ToggleDarkMode)}
-    aria-label={getTranslation(TranslationId.ToggleDarkMode)}
+    data-title={$t("toggle-dark-mode")}
+    aria-label={$t("toggle-dark-mode")}
   >
     <Fa icon={faMoon} />
   </button>
@@ -54,7 +69,7 @@
     position: fixed;
     left: -2px;
     top: 4em;
-    z-index: 1001;
+    z-index: 1;
   }
 
   .floating-side-buttons .btn {
