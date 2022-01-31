@@ -3,9 +3,10 @@
   import DependenciesTable from "./DependenciesTable.svelte";
   import Dropzone from "./Dropzone.svelte";
   import FloatingSideButtons from "./buttons/FloatingSideButtons.svelte";
+  import SelectLocaleModal from "./LanguageSelectionModal.svelte";
   import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
-  import { getTranslation, TranslationId } from "../modules/translations";
+  import { t } from "svelte-i18n";
 
   afterUpdate(() => lazyLoad.update());
 </script>
@@ -41,7 +42,7 @@
               </a>
               <div>
                 <span>
-                  {@html getTranslation(TranslationId.AppDescription)}
+                  {@html $t("app-description")}
                 </span>
               </div>
             </div>
@@ -61,4 +62,5 @@
     </div>
   </div>
 </div>
+<SelectLocaleModal />
 <FloatingSideButtons />

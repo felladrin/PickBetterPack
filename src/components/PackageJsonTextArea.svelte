@@ -6,7 +6,8 @@
   import { droppedPackageJsonContent } from "../stores/droppedPackageJsonContent";
   import getHashFromString from "djb2a";
   import { packageJsonTemplate } from "../constants/packageJsonTemplate";
-  import { tourConfig } from "../constants/tourConfig";
+  import { t } from "svelte-i18n";
+  import { get } from "svelte/store";
   import stripJsonComments from "strip-json-comments";
   import { getRandomPackage } from "../functions/getRandomPackage";
 
@@ -60,7 +61,7 @@
     setTimeout(() => {
       const localStorageKey = "hasDisplayedPickBetterPackTour";
       const tourConfigHash = getHashFromString(
-        JSON.stringify(tourConfig)
+        JSON.stringify([get(t)("tour-title"), get(t)("tour-intro")])
       ).toString();
       if (window.localStorage?.getItem(localStorageKey) !== tourConfigHash) {
         introJs()
@@ -100,9 +101,9 @@
   spellcheck="false"
   data-gramm="false"
   wrap="off"
-  data-title={tourConfig.title}
-  data-intro={tourConfig.intro}
-  data-position={tourConfig.position}
+  data-title={$t("tour-title")}
+  data-intro={$t("tour-intro")}
+  data-position="bottom"
   data-test-id="package-json-textarea"
 />
 

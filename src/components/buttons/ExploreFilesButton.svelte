@@ -1,7 +1,6 @@
 <script>
-  import pupa from "pupa";
+  import { t } from "svelte-i18n";
   import { openWinBox } from "../../functions/openWinBox";
-  import { getTranslation, TranslationId } from "../../modules/translations";
 
   export let packageName = "npm";
 </script>
@@ -12,10 +11,8 @@
   on:click={() =>
     openWinBox({
       url: `https://www.runpkg.com/?${packageName}/`,
-      title: pupa(getTranslation(TranslationId.FilesFromPackage), {
-        packageName,
-      }),
+      title: $t("files-from-package", { values: { packageName } }),
     })}
 >
-  {getTranslation(TranslationId.ExploreFiles)}
+  {$t("explore-files")}
 </button>

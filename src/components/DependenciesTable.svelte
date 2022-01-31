@@ -6,7 +6,7 @@
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { getSimilarPackagesNames } from "../functions/getSimilarPackagesNames";
   import { fetchPackage } from "../functions/fetchPackage";
-  import { getTranslation, TranslationId } from "../modules/translations";
+  import { t } from "svelte-i18n";
 
   const similarPackagesToDisplayPerBatch = 5;
   let dependencyPerSimilarPackagesDisplayedMap = {};
@@ -17,8 +17,8 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="text-center">{getTranslation(TranslationId.Installed)}</th>
-          <th class="text-center">{getTranslation(TranslationId.Similar)}</th>
+          <th class="text-center">{$t("installed")}</th>
+          <th class="text-center">{$t("similar")}</th>
         </tr>
       </thead>
       <tbody>
@@ -32,7 +32,9 @@
                   {:then packageResult}
                     {#if !packageResult}
                       <summary class="collapse-header">
-                        <strong>{dependencyName}</strong> was not found on NPM.
+                        {@html $t("dependency-not-found-on-npm", {
+                          values: { dependencyName },
+                        })}
                       </summary>
                     {:else if packageResult.hasOwnProperty("error")}
                       <PackageOnNpmWithoutDetails
@@ -75,7 +77,7 @@
                             ] ?? similarPackagesToDisplayPerBatch) +
                             similarPackagesToDisplayPerBatch)}
                       >
-                        {getTranslation(TranslationId.ShowMore)}
+                        {$t("show-more")}
                       </button>
                     {/if}
                   {:catch}
