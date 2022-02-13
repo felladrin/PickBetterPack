@@ -2,7 +2,6 @@ image: mcr.microsoft.com/playwright:focal
 
 tasks:
   - name: Dev Server
-    before: nvm install --lts --latest-npm
     init: npm ci
     command: npm run dev
 
