@@ -28,7 +28,7 @@
     "svelte-fa": "2.4.0",
     "svelte-i18n": "3.3.13",
     "unique-random-array": "3.0.0",
-    "vanilla-lazyload": "17.6.0",
+    "vanilla-lazyload": "17.6.1",
     "winbox": "0.2.1"
   },
   "devDependencies": {
