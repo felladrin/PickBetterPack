@@ -1,5 +1,5 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
-import {  devices } from "@playwright/test";
+import { devices } from "@playwright/test";
 
 export default {
   forbidOnly: !!process.env.CI,
@@ -10,7 +10,7 @@ export default {
     video: "on-first-retry",
   },
   webServer: {
-    command: "npm run build-and-preview",
+    command: "npm run build-and-preview -- --port 5000",
     port: 5000,
     timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
