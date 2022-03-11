@@ -22,7 +22,7 @@
 
       const packageAnalysis = await analyzePackage(packageName);
 
-      const licenses = packageLicenseTypes(packageAnalysis.collected.metadata);
+      const licenses = packageLicenseTypes(packageAnalysis);
 
       if (licenses.length === 0) throw new Error();
 

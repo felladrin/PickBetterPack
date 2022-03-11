@@ -1,5 +1,5 @@
 import memoizePromise from "p-memoize";
-import { npmsApi } from "../constants/npmsApi";
+import { yarnNpmApi } from "../constants/npmApi";
 import { limitNpmsApiCallsConcurrency } from "./limitNpmsApiCallsConcurrency";
 import type { SearchResponse } from "../types/npms";
 
@@ -7,9 +7,14 @@ export const fetchPackage = memoizePromise(async (packageName: string) =>
   limitNpmsApiCallsConcurrency(
     async () =>
       (
-        await npmsApi
-          .get("search", { searchParams: { q: packageName, size: 1 } })
+        await yarnNpmApi
+          .get("-/v1/search", {
+            searchParams: {
+              text: packageName,
+              size: 1,
+            },
+          })
           .json<SearchResponse>()
-      ).results[0]
+      ).objects[0]
   )
 );

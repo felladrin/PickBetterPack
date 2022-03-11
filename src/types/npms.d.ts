@@ -111,7 +111,7 @@ export type SearchQuery = {
 
 export type SearchResponse = {
   total: number;
-  results: SearchResult[];
+  objects: SearchResult[];
 };
 
 export type SearchResult = {
