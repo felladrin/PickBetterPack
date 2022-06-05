@@ -13,3 +13,4 @@ ports:
 vscode:
   extensions:
     - lokalise.i18n-ally
+    - svelte.svelte-vscode
