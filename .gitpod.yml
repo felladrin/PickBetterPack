@@ -7,7 +7,7 @@ tasks:
 
 ports:
   - name: Dev Server
-    port: 3000
+    port: 5173
     onOpen: open-preview
 
 vscode:
