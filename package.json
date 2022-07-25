@@ -11,8 +11,8 @@
     "test": "svelte-check && cross-env PW_EXPERIMENTAL_TS_ESM=1 playwright test"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "6.1.1",
-    "@fortawesome/free-solid-svg-icons": "6.1.1",
+    "@fortawesome/free-brands-svg-icons": "6.1.2",
+    "@fortawesome/free-solid-svg-icons": "6.1.2",
     "djb2a": "2.0.0",
     "halfmoon": "1.1.1",
     "intro.js": "6.0.0",
