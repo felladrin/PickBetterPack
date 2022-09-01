@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.25.1",
-    "@sveltejs/vite-plugin-svelte": "1.0.3",
+    "@sveltejs/vite-plugin-svelte": "1.0.4",
     "@tsconfig/svelte": "3.0.0",
     "@types/halfmoon": "1.0.2",
     "@types/intro.js": "5.1.0",
