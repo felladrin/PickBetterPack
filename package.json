@@ -32,7 +32,7 @@
     "winbox": "0.2.6"
   },
   "devDependencies": {
-    "@playwright/test": "1.25.1",
+    "@playwright/test": "1.25.2",
     "@sveltejs/vite-plugin-svelte": "1.0.5",
     "@tsconfig/svelte": "3.0.0",
     "@types/halfmoon": "1.0.2",
@@ -41,7 +41,7 @@
     "cross-env": "7.0.3",
     "git-last-commit": "1.0.1",
     "helper-git-hash": "1.0.0",
-    "playwright": "1.25.1",
+    "playwright": "1.25.2",
     "svelte": "3.50.0",
     "svelte-check": "2.9.0",
     "svelte-preprocess": "4.10.7",
