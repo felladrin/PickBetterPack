@@ -12,6 +12,7 @@
 <a
   href="https://openbase.com/js/{packageName}/reviews?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"
   target="_blank"
+  rel="noreferrer"
   on:click|preventDefault={({ currentTarget }) =>
     openWinBox({
       url: currentTarget.href,

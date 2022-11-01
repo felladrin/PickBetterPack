@@ -41,6 +41,7 @@
   <a
     href="https://git.io/Jy55I"
     target="_blank"
+    rel="noreferrer"
     class="btn"
     role="button"
     data-toggle="tooltip"

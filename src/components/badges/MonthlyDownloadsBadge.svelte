@@ -12,6 +12,7 @@
 <a
   href="https://npmcharts.com/compare/{packageName}?minimal=true"
   target="_blank"
+  rel="noreferrer"
   on:click|preventDefault={({ currentTarget }) =>
     openWinBox({
       url: currentTarget.href,

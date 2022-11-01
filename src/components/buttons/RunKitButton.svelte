@@ -9,6 +9,7 @@
 <a
   href="https://npm.runkit.com/{packageName}"
   target="_blank"
+  rel="noreferrer"
   class="btn btn-sm"
   role="button"
   on:click|preventDefault={({ currentTarget }) =>

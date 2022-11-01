@@ -8,6 +8,7 @@
 <a
   href="https://www.npmjs.com/package/{packageName}"
   target="_blank"
+  rel="noreferrer"
   class="btn btn-sm"
   role="button"
 >

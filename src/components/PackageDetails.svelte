@@ -67,6 +67,7 @@
           <LicenseBadge packageName={packageSearchResult.package.name} /> <br />
           <a
             target="_blank"
+            rel="noreferrer"
             href={`https://snyk.io/test/npm/${packageSearchResult.package.name}`}
           >
             <img
@@ -90,6 +91,7 @@
                   packageSearchResult.package.links.repository
                 )}
                 target="_blank"
+                rel="noreferrer"
                 class="text-decoration-none"
               >
                 <img
@@ -112,6 +114,7 @@
                 href="https://www.npmjs.com/package/{packageSearchResult.package
                   .name}?activeTab=versions"
                 target="_blank"
+                rel="noreferrer"
                 class="badge badge-pill"
                 >v{packageSearchResult.package.version}
               </a>
@@ -119,6 +122,7 @@
                 href="https://www.npmjs.com/package/{packageSearchResult.package
                   .name}?activeTab=versions"
                 target="_blank"
+                rel="noreferrer"
                 class="badge badge-pill"
                 >{formatToRelativeTime(
                   new Date(packageSearchResult.package.date)

@@ -19,7 +19,11 @@
     </div>
   </summary>
   <div class="collapse-content">
-    <a target="_blank" href={`https://www.npmjs.com/package/${packageName}`}>
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={`https://www.npmjs.com/package/${packageName}`}
+    >
       <img
         on:error={handleImageError}
         data-src={`https://badgen.net/npm/v/${packageName}`}

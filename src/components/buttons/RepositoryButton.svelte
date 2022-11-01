@@ -9,7 +9,7 @@
   export let href = "#";
 </script>
 
-<a {href} target="_blank" class="btn btn-sm" role="button">
+<a {href} target="_blank" rel="noreferrer" class="btn btn-sm" role="button">
   {#if /github/i.test(href)}
     <Fa icon={faGithub} />
   {:else if /gitlab/i.test(href)}

@@ -45,6 +45,7 @@
   href="https://spdx.org/licenses"
   title={$t("clickToReadAboutLicense")}
   target="_blank"
+  rel="noreferrer"
   on:click|preventDefault={handleClick}
 >
   <img
