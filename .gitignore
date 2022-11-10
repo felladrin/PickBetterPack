@@ -4,3 +4,4 @@
 /test-results/
 .DS_Store
 *.log
+svelte.config.js
