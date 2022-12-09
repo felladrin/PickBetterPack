@@ -1,5 +1,5 @@
 <div class="progress">
-  <div class="progress-bar progress-bar-animated" role="progressbar" />
+  <div class="progress-bar progress-bar-animated" role="progressbar"></div>
 </div>
 
 <style>

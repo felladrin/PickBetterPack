@@ -13,7 +13,7 @@
 
 <Dropzone />
 <div class="page-wrapper">
-  <div class="sticky-alerts" />
+  <div class="sticky-alerts"></div>
   <div class="content-wrapper">
     <div class="container-fluid">
       <div class="container-fluid">

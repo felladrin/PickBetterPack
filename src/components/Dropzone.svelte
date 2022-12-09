@@ -53,8 +53,7 @@
   on:dragenter={allowDrag}
   on:dragover={allowDrag}
   on:dragleave={hideDropZone}
-  on:drop={handleDrop}
-/>
+  on:drop={handleDrop}></div>
 
 <style>
   .dropzone {

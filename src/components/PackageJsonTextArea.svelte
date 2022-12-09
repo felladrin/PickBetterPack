@@ -95,15 +95,13 @@
   class="form-control h-full"
   class:is-invalid={hasError}
   autocomplete="off"
-  autocorrect="off"
   autocapitalize="off"
   spellcheck="false"
   data-gramm="false"
-  wrap="off"
+  wrap="soft"
   data-title={$t("tourTitle")}
   data-intro={$t("tourIntro")}
-  data-test-id="package-json-textarea"
-/>
+  data-test-id="package-json-textarea"></textarea>
 
 <style>
   textarea {
