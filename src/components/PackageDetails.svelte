@@ -135,16 +135,16 @@
       <div class="row">
         <div class="col d-flex justify-content-center">
           <NpmButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10" />
+          <span class="ml-10"></span>
           {#if packageSearchResult.package.links.homepage && !packageSearchResult.package.links.homepage.includes(packageSearchResult.package.links.repository ?? "#readme")}
             <HomeButton href={packageSearchResult.package.links.homepage} />
-            <span class="ml-10" />
+            <span class="ml-10"></span>
           {/if}
           {#if packageSearchResult.package.links.repository}
             <RepositoryButton
               href={packageSearchResult.package.links.repository}
             />
-            <span class="ml-10" />
+            <span class="ml-10"></span>
           {/if}
           <RunkitButton packageName={packageSearchResult.package.name} />
         </div>
@@ -170,7 +170,6 @@
                 }
               }}
               autocomplete="off"
-              autocorrect="off"
               autocapitalize="off"
               spellcheck="false"
               data-gramm="false"
@@ -181,7 +180,7 @@
       <div class="row mt-10">
         <div class="col d-flex justify-content-center">
           <OpenReadmeButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10" />
+          <span class="ml-10"></span>
           <ExploreFilesButton packageName={packageSearchResult.package.name} />
         </div>
       </div>

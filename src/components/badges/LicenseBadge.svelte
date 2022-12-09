@@ -15,6 +15,13 @@
   }: {
     currentTarget: EventTarget & HTMLAnchorElement;
   }) {
+    const openDefaultLicensesPage = () => {
+      openWinBox({
+        url: currentTarget.href,
+        title: $t("licenses"),
+      });
+    }
+
     try {
       const { default: packageLicenseTypes } = await import(
         "package-license-types"
@@ -24,19 +31,18 @@
 
       const licenses = packageLicenseTypes(packageAnalysis);
 
-      if (licenses.length === 0) throw new Error();
-
-      licenses.forEach((licenseName) => {
-        openWinBox({
-          url: `https://spdx.org/licenses/${licenseName}.html#licenseText`,
-          title: $t("licenseName", { values: { licenseName } }),
+      if (licenses.length === 0) {
+        openDefaultLicensesPage();
+      } else {
+        licenses.forEach((licenseName) => {
+          openWinBox({
+            url: `https://spdx.org/licenses/${licenseName}.html#licenseText`,
+            title: $t("licenseName", { values: { licenseName } }),
+          });
         });
-      });
+      }
     } catch {
-      openWinBox({
-        url: currentTarget.href,
-        title: $t("licenses"),
-      });
+      openDefaultLicensesPage();
     }
   }
 </script>

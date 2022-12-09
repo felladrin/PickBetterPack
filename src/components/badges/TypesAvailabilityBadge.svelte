@@ -13,7 +13,7 @@
   href="https://www.jsdocs.io/package/{packageName}#package-index"
   target="_blank"
   rel="noreferrer"
-  on:click|preventDefault={async ({ currentTarget }) => {
+  on:click|preventDefault={({ currentTarget }) => {
     openWinBox({ url: currentTarget.href, title: `${packageName}'s types` });
   }}
 >
