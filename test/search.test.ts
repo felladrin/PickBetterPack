@@ -15,7 +15,7 @@ test("similar packages", async ({ page, baseURL }) => {
       2
     )
   );
-  await page.locator(".introjs-donebutton").click();
+  await page.locator("[data-shepherd-step-id='package-json-textarea'] .shepherd-footer .shepherd-button").click();
   await page.locator("strong", { hasText: "npm" }).first().waitFor();
   await page.locator("[data-test-id=package-details]").first().click();
   await page

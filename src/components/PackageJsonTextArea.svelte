@@ -2,7 +2,7 @@
   import { getDependenciesFromPackage } from "../functions/getDependenciesFromPackage";
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { onMount } from "svelte";
-  import introJs from "intro.js";
+  import Shepherd from 'shepherd.js';
   import { droppedPackageJsonContent } from "../stores/droppedPackageJsonContent";
   import getHashFromString from "djb2a";
   import { packageJsonTemplate } from "../constants/packageJsonTemplate";
@@ -12,7 +12,7 @@
 
   let packageJsonAsString = JSON.stringify(packageJsonTemplate, null, 2);
 
-  let hasError = false;
+  let hasError;
 
   let packageJsonAsObject = {};
 
@@ -63,12 +63,35 @@
         JSON.stringify([$t("tourTitle"), $t("tourIntro")])
       ).toString();
       if (window.localStorage?.getItem(localStorageKey) !== tourConfigHash) {
-        introJs()
-          .setOptions({ showBullets: false })
-          .oncomplete(() => {
-            window.localStorage?.setItem(localStorageKey, tourConfigHash);
-          })
-          .start();
+        const tour = new Shepherd.Tour({
+          useModalOverlay: true,
+          exitOnEsc: true,
+          defaultStepOptions: {
+            scrollTo: true
+          },
+        });
+
+        tour.addStep({
+          id: 'package-json-textarea',
+          title: $t("tourTitle"),
+          text: $t("tourIntro"),
+          attachTo: {
+            element: '[data-test-id=package-json-textarea]',
+            on: 'bottom'
+          },
+          buttons: [
+            {
+              text: 'Ok',
+              action: tour.complete
+            }
+          ],
+        });
+
+        tour.on("complete", () => {
+          window.localStorage?.setItem(localStorageKey, tourConfigHash);
+        })
+
+        tour.start();
       }
     }, 1500);
   });

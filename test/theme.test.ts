@@ -18,7 +18,7 @@ test("dark mode", async ({ page, baseURL }) => {
   await page
     .locator("[data-test-id=logo-light-mode]")
     .waitFor({ state: "visible" });
-  await page.locator(".introjs-donebutton").click();
+  await page.locator("[data-shepherd-step-id='package-json-textarea'] .shepherd-footer .shepherd-button").click();
   await page.locator("[data-test-id=toggle-dark-mode-button]").click();
   await page
     .locator("[data-test-id=logo-dark-mode]")
