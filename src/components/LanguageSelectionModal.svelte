@@ -1,4 +1,4 @@
-<script type="ts">
+<script lang="ts">
   import { locale, locales, t } from "svelte-i18n";
   import ISO6391 from "iso-639-1";
   import type { LanguageCode } from "iso-639-1";
