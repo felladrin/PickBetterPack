@@ -18,6 +18,7 @@
   import { t } from "svelte-i18n";
 
   export let packageSearchResult: SearchResult;
+  export let open = false;
 
   afterUpdate(() => lazyLoad.update());
 
@@ -44,7 +45,7 @@
   }
 </script>
 
-<details class="collapse-panel" data-test-id="package-details">
+<details class="collapse-panel" data-test-id="package-details" {open}>
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">
@@ -135,16 +136,16 @@
       <div class="row">
         <div class="col d-flex justify-content-center">
           <NpmButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10"></span>
+          <span class="ml-10" />
           {#if packageSearchResult.package.links.homepage && !packageSearchResult.package.links.homepage.includes(packageSearchResult.package.links.repository ?? "#readme")}
             <HomeButton href={packageSearchResult.package.links.homepage} />
-            <span class="ml-10"></span>
+            <span class="ml-10" />
           {/if}
           {#if packageSearchResult.package.links.repository}
             <RepositoryButton
               href={packageSearchResult.package.links.repository}
             />
-            <span class="ml-10"></span>
+            <span class="ml-10" />
           {/if}
           <RunkitButton packageName={packageSearchResult.package.name} />
         </div>
@@ -180,7 +181,7 @@
       <div class="row mt-10">
         <div class="col d-flex justify-content-center">
           <OpenReadmeButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10"></span>
+          <span class="ml-10" />
           <ExploreFilesButton packageName={packageSearchResult.package.name} />
         </div>
       </div>

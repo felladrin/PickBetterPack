@@ -6,9 +6,10 @@
   afterUpdate(() => lazyLoad.update());
 
   export let packageName = "npm";
+  export let open = false;
 </script>
 
-<details class="collapse-panel">
+<details class="collapse-panel" {open}>
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">

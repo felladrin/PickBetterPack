@@ -8,7 +8,7 @@
   import { fetchPackage } from "../functions/fetchPackage";
   import { t } from "svelte-i18n";
 
-  const similarPackagesToDisplayPerBatch = 5;
+  const similarPackagesToDisplayPerBatch = 6;
   let dependencyPerSimilarPackagesDisplayedMap = {};
 </script>
 
@@ -39,12 +39,19 @@
                     {:else if packageResult.hasOwnProperty("error")}
                       <PackageOnNpmWithoutDetails
                         packageName={dependencyName}
+                        open={true}
                       />
                     {:else}
-                      <PackageDetails packageSearchResult={packageResult} />
+                      <PackageDetails
+                        packageSearchResult={packageResult}
+                        open={true}
+                      />
                     {/if}
                   {:catch}
-                    <PackageOnNpmWithoutDetails packageName={dependencyName} />
+                    <PackageOnNpmWithoutDetails
+                      packageName={dependencyName}
+                      open={true}
+                    />
                   {/await}
                 </td>
                 <td>
