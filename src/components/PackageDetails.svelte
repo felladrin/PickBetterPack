@@ -52,7 +52,7 @@
         <div class="col text-truncate d-inline-block w-300">
           <strong>{packageSearchResult.package.name}</strong>
           <span class="text-muted">
-            {packageSearchResult.package.description}
+            {packageSearchResult.package.description || "No description available"}
           </span>
         </div>
       </div>
@@ -108,7 +108,7 @@
               </a>
               <br />
             {/if}
-            {packageSearchResult.package.description}
+            {packageSearchResult.package.description || "No description available"}
             <br />
             <span class="badge-group mt-5" role="group">
               <a
