@@ -36,11 +36,11 @@ test("similar packages", async ({ page, baseURL }) => {
   ).toBe(5);
   await page.waitForFunction(
     () =>
-      document.querySelectorAll("[data-test-id=package-details]").length === 6
+      document.querySelectorAll("[data-test-id=package-details]").length === 7
   );
   await page.locator("button", { hasText: "Show More" }).click();
   await page.waitForFunction(
     () =>
-      document.querySelectorAll("[data-test-id=package-details]").length === 11
+      document.querySelectorAll("[data-test-id=package-details]").length === 13
   );
 });
