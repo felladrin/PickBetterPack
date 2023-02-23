@@ -1,5 +1,5 @@
 import { waitLocale, register, init } from "svelte-i18n";
-import getPreferredLocale from "preferred-locale";
+import { preferredLocale } from "preferred-locale";
 
 const localeLoader = import.meta.glob("../locales/*.json");
 
@@ -16,7 +16,7 @@ export async function loadLocale() {
 
   const fallbackLocale = "en";
 
-  const initialLocale = getPreferredLocale(translatedLocales, fallbackLocale, {
+  const initialLocale = preferredLocale(fallbackLocale, translatedLocales, {
     regionLowerCase: true,
     languageOnly: true,
   });
