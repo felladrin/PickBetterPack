@@ -10,10 +10,9 @@ export default {
     video: "on-first-retry",
   },
   webServer: {
-    command: "npm run build-and-preview -- --port 5000",
-    port: 5000,
+    command: "npm run build-and-preview -- --port 3000",
+    port: 3000,
     timeout: 120 * 1000,
-    reuseExistingServer: !process.env.CI,
   },
   projects: [
     {
