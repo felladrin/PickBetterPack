@@ -35,6 +35,19 @@
     return url;
   }
 
+  function sanitizePackageDescription(description = "") {
+    if (
+      !description ||
+      description.startsWith("[!") ||
+      description.startsWith("![") ||
+      description.startsWith("<")
+    ) {
+      return "No description available.";
+    }
+
+    return description;
+  }
+
   function getGithubContributorsPageUrl(repositoryUrl = "") {
     const matches = repositoryUrl.match(
       "^(https|git)(://|@)([^/:]+)[/:]([^/:]+)/(.+)"
@@ -52,7 +65,9 @@
         <div class="col text-truncate d-inline-block w-300">
           <strong>{packageSearchResult.package.name}</strong>
           <span class="text-muted">
-            {packageSearchResult.package.description || "No description available"}
+            {sanitizePackageDescription(
+              packageSearchResult.package.description
+            )}
           </span>
         </div>
       </div>
@@ -108,7 +123,9 @@
               </a>
               <br />
             {/if}
-            {packageSearchResult.package.description || "No description available"}
+            {sanitizePackageDescription(
+              packageSearchResult.package.description
+            )}
             <br />
             <span class="badge-group mt-5" role="group">
               <a
