@@ -79,5 +79,6 @@
     line-height: normal;
     -webkit-font-smoothing: inherit;
     -webkit-appearance: none;
+    appearance: none;
   }
 </style>
