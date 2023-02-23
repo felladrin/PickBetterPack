@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("similar packages", async ({ page, baseURL }) => {
-  await page.goto(baseURL);
+  if (baseURL) await page.goto(baseURL);
   await page.locator("[data-test-id=package-json-textarea]").fill(
     JSON.stringify(
       {
@@ -15,9 +15,12 @@ test("similar packages", async ({ page, baseURL }) => {
       2
     )
   );
-  await page.locator("[data-shepherd-step-id='package-json-textarea'] .shepherd-footer .shepherd-button").click();
+  await page
+    .locator(
+      "[data-shepherd-step-id='package-json-textarea'] .shepherd-footer .shepherd-button"
+    )
+    .click();
   await page.locator("strong", { hasText: "npm" }).first().waitFor();
-  await page.locator("[data-test-id=package-details]").first().click();
   await page
     .locator("[data-test-id=package-details]")
     .first()
