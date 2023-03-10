@@ -43,7 +43,7 @@
     "helper-git-hash": "1.0.0",
     "playwright": "1.31.2",
     "shepherd.js": "11.0.1",
-    "svelte": "3.55.1",
+    "svelte": "3.56.0",
     "svelte-check": "3.1.0",
     "svelte-preprocess": "5.0.1",
     "typescript": "4.9.5",
