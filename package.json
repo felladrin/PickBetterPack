@@ -42,7 +42,7 @@
     "git-last-commit": "1.0.1",
     "helper-git-hash": "1.0.0",
     "playwright": "1.32.1",
-    "shepherd.js": "11.0.1",
+    "shepherd.js": "11.1.1",
     "svelte": "3.58.0",
     "svelte-check": "3.1.4",
     "svelte-preprocess": "5.0.3",
