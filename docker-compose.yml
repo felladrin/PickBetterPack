@@ -1,0 +1,42 @@
+version: "3"
+
+x-base-service: &base-service
+  image: node:18
+  volumes:
+    - .:/app
+  working_dir: /app
+
+services:
+  dev:
+    <<: *base-service
+    command: npm run dev -- --host
+    ports:
+      - ${PORT:-5173}:5173
+  build:
+    <<: *base-service
+    command: npm run build
+    profiles:
+      - build
+  build-and-preview:
+    <<: *base-service
+    command: npm run build-and-preview -- --host
+    ports:
+      - ${PORT:-4173}:4173
+    profiles:
+      - build-and-preview
+  test:
+    <<: *base-service
+    image: mcr.microsoft.com/playwright:focal
+    command: npm run test
+    profiles:
+      - test
+  npm:
+    <<: *base-service
+    entrypoint: npm
+    profiles:
+      - npm
+  bash:
+    <<: *base-service
+    command: bash
+    profiles:
+      - bash

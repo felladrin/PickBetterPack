@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "build-and-preview": "vite build && vite preview",
-    "test": "svelte-check && cross-env PW_EXPERIMENTAL_TS_ESM=1 playwright test",
+    "test": "svelte-check && playwright test",
     "postinstall": "esbuild svelte.config.ts --outfile=svelte.config.js"
   },
   "dependencies": {
@@ -37,7 +37,6 @@
     "@tsconfig/svelte": "4.0.1",
     "@types/halfmoon": "1.0.2",
     "@types/winbox": "0.2.1",
-    "cross-env": "7.0.3",
     "esbuild": "0.17.15",
     "git-last-commit": "1.0.1",
     "helper-git-hash": "1.0.0",

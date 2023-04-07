@@ -1,6 +1,13 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ESNext",
+    "verbatimModuleSyntax": true,
+    "sourceMap": true,
+    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "useDefineForClassFields": true,
     "resolveJsonModule": true,
