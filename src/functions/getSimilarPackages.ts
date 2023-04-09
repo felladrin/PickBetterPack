@@ -25,12 +25,13 @@ export async function getSimilarPackages(packageName = "") {
     keywordToSearchResultMap.set(keyword, keywordsSearchResult[index]);
   });
 
+  const hasEnoughScore = (result: SearchResult) => result.score.final >= 0.21;
+
   const mostRelevantKeywordsResults = keywordsSearchResult
-    .slice()
     .filter(
       (result) =>
         result.total >= 5 &&
-        result.objects[result.objects.length - 1].score.final >= 0.21
+        hasEnoughScore(result.objects[result.objects.length - 1])
     )
     .sort((a, b) => a.total - b.total)
     .slice(0, 3);
@@ -39,16 +40,33 @@ export async function getSimilarPackages(packageName = "") {
     mostRelevantKeywordsResults.includes(keywordToSearchResultMap.get(keyword))
   );
 
+  const packageDescription = packageSearchResult.package.description ?? "";
+
+  const hasValidDescription = (
+    result: SearchResult,
+    prohibitedPackageDescription: string
+  ) => {
+    const description = result.package.description ?? "";
+
+    const packageDescriptionIsNotEmpty = description.trim().length > 0;
+
+    const prohibitedDescriptionStartCharacters = ["[!", "![", "<"];
+
+    const packageDescriptionDoesNotStartWithProhibitedCharacters =
+      packageDescriptionIsNotEmpty &&
+      prohibitedDescriptionStartCharacters.every(
+        (characters) => !packageDescription.startsWith(characters)
+      );
+
+    return (
+      description !== prohibitedPackageDescription &&
+      packageDescriptionDoesNotStartWithProhibitedCharacters
+    );
+  };
+
   let extractedTerms = [] as string[];
 
-  const packageDescription = packageSearchResult.package.description;
-
-  if (
-    packageDescription &&
-    !packageDescription.startsWith("[!") &&
-    !packageDescription.startsWith("![") &&
-    !packageDescription.startsWith("<")
-  ) {
+  if (hasValidDescription(packageSearchResult, "")) {
     extractedTerms = extractKeywords(packageDescription);
   }
 
@@ -119,22 +137,24 @@ export async function getSimilarPackages(packageName = "") {
       []
     );
 
+  const hasValidName = (
+    result: SearchResult,
+    prohibitedPackageName: string
+  ) => {
+    const name = result.package.name;
+    const isNotRelatedToTheProhibitedPackage = !new RegExp(
+      `[.-/]${prohibitedPackageName}[.-/]`
+    ).test(name);
+
+    return name !== prohibitedPackageName && isNotRelatedToTheProhibitedPackage;
+  };
+
   const filteredSearchResults = mergedSearchResults
     .filter(
       (result) =>
-        result.score.final >= 0.21 &&
-        result.package.name !== packageName &&
-        !result.package.name.includes(`${packageName}.`) &&
-        !result.package.name.includes(`${packageName}-`) &&
-        !result.package.name.includes(`-${packageName}`) &&
-        !result.package.name.includes(`${packageName}/`) &&
-        !result.package.name.includes(`/${packageName}`) &&
-        result.package.description &&
-        result.package.description.trim().length > 0 &&
-        result.package.description !== packageDescription &&
-        !result.package.description.startsWith("[!") &&
-        !result.package.description.startsWith("![") &&
-        !result.package.description.startsWith("<")
+        hasEnoughScore(result) &&
+        hasValidName(result, packageName) &&
+        hasValidDescription(result, packageDescription)
     )
     .sort((a, b) => b.searchScore - a.searchScore);
 
