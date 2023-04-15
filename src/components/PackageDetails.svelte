@@ -16,6 +16,8 @@
   import RunkitButton from "./buttons/RunKitButton.svelte";
   import type { SearchResult } from "../types/npms";
   import { t } from "svelte-i18n";
+  import GitHubStarsBadge from "./badges/GitHubStarsBadge.svelte";
+  import BundlephobiaBadge from "./badges/BundlephobiaBadge.svelte";
 
   export let packageSearchResult: SearchResult;
   export let open = false;
@@ -89,7 +91,12 @@
           <MonthlyDownloadsBadge
             packageName={packageSearchResult.package.name}
           />
-          <LicenseBadge packageName={packageSearchResult.package.name} /> <br />
+          {#if packageSearchResult.package.links.repository && /github/i.test(packageSearchResult.package.links.repository)}
+            <GitHubStarsBadge
+              gitHubUrl={packageSearchResult.package.links.repository}
+            />
+          {/if}
+          <br />
           <a
             target="_blank"
             rel="noreferrer"
@@ -102,6 +109,9 @@
               class="lazy"
             />
           </a>
+          <LicenseBadge packageName={packageSearchResult.package.name} />
+          <br />
+          <BundlephobiaBadge packageName={packageSearchResult.package.name} />
           <TypesAvailabilityBadge
             packageName={packageSearchResult.package.name}
           />

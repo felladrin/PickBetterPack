@@ -10,19 +10,19 @@
 </script>
 
 <a
-  href="https://openbase.com/js/{packageName}/reviews?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge"
+  href="https://bundlephobia.com/package/{packageName}"
   target="_blank"
   rel="noreferrer"
   on:click|preventDefault={({ currentTarget }) =>
     openWinBox({
       url: currentTarget.href,
-      title: `${packageName}'s reviews`,
+      title: `${packageName}'s bundle size`,
     })}
 >
   <img
     on:error={handleImageError}
-    data-src="https://badges.openbase.com/js/rating/{packageName}.svg"
-    alt="Rating on Openbase"
+    data-src="https://img.shields.io/bundlephobia/minzip/{packageName}?color=success&label=size&style=flat"
+    alt="Bundle Size"
     class="lazy"
   />
 </a>
