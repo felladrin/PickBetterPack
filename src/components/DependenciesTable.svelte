@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import PackageOnNpmWithoutDetails from "./PackageOnNpmWithoutDetails.svelte";
   import PackageLoadingProgressBar from "./PackageLoadingProgressBar.svelte";
   import NoSimilarPackagesSummary from "./NoSimilarPackagesSummary.svelte";
@@ -9,6 +9,10 @@
   import { t } from "svelte-i18n";
 
   const similarPackagesToDisplayPerBatch = 6;
+  const openedSimilarPackages = new Map<
+    import("../types/npms").SearchResult,
+    boolean
+  >();
   let dependencyPerSimilarPackagesDisplayedMap = {};
 </script>
 
@@ -65,7 +69,16 @@
                             <strong>{similarPackageName}</strong>
                           </summary>
                         {:then packageInfo}
-                          <PackageDetails packageSearchResult={packageInfo} />
+                          <PackageDetails
+                            packageSearchResult={packageInfo}
+                            open={openedSimilarPackages.get(packageInfo) ??
+                              false}
+                            onTogglePanel={(wasClosedWhenToggled) =>
+                              openedSimilarPackages.set(
+                                packageInfo,
+                                wasClosedWhenToggled
+                              )}
+                          />
                         {/await}
                       {:else}
                         <NoSimilarPackagesSummary />

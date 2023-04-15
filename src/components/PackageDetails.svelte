@@ -19,6 +19,7 @@
 
   export let packageSearchResult: SearchResult;
   export let open = false;
+  export let onTogglePanel: (wasClosedWhenToggled: boolean) => void = () => {};
 
   afterUpdate(() => lazyLoad.update());
 
@@ -58,7 +59,15 @@
   }
 </script>
 
-<details class="collapse-panel" data-test-id="package-details" {open}>
+<details
+  class="collapse-panel"
+  data-test-id="package-details"
+  {open}
+  on:click={({ currentTarget }) => {
+    onTogglePanel(!currentTarget.hasAttribute("open"));
+  }}
+  on:keypress={() => {}}
+>
   <summary class="collapse-header">
     <div class="container-fluid">
       <div class="row">
