@@ -1,11 +1,11 @@
 import memoizePromise from "p-memoize";
-import { cloudflareNpmApi } from "../constants/npmApi";
+import { yarnNpmApi } from "../constants/npmApi";
 import { limitNpmsApiCallsConcurrency } from "./limitNpmsApiCallsConcurrency";
 import type { PackageResult } from "../types/npms";
 
 export const analyzePackage = memoizePromise((packageName: string) =>
   limitNpmsApiCallsConcurrency(() =>
-    cloudflareNpmApi
+    yarnNpmApi
       .get(`${encodeURIComponent(packageName)}/latest`)
       .json<PackageResult["collected"]>()
   )
