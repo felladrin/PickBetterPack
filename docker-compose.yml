@@ -1,7 +1,7 @@
 version: "3"
 
 x-base-service: &base-service
-  image: node:19
+  image: node:20
   volumes:
     - .:/app
   working_dir: /app
