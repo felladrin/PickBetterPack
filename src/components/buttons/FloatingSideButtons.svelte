@@ -39,7 +39,7 @@
     <Fa icon={faCommentDots} />
   </button>
   <a
-    href="https://git.io/Jy55I"
+    href="https://github.com/felladrin/PickBetterPack"
     target="_blank"
     rel="noreferrer"
     class="btn"
