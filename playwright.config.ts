@@ -23,9 +23,10 @@ export default {
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
+    // Temporarily disabled due to CI issues on https://github.com/felladrin/PickBetterPack/pull/354
+    // {
+    //   name: "webkit",
+    //   use: { ...devices["Desktop Safari"] },
+    // },
   ],
 } as PlaywrightTestConfig;
