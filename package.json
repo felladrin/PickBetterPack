@@ -32,7 +32,7 @@
     "winbox": "0.2.6"
   },
   "devDependencies": {
-    "@playwright/test": "1.33.0",
+    "@playwright/test": "1.34.0",
     "@sveltejs/vite-plugin-svelte": "2.2.0",
     "@tsconfig/svelte": "4.0.1",
     "@types/github-url-to-object": "^4.0.1",
@@ -42,7 +42,7 @@
     "git-last-commit": "1.0.1",
     "github-url-to-object": "^4.0.6",
     "helper-git-hash": "1.0.0",
-    "playwright": "1.33.0",
+    "playwright": "1.34.0",
     "shepherd.js": "11.1.1",
     "svelte": "3.59.1",
     "svelte-check": "3.3.2",
