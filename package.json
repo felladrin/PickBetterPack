@@ -32,7 +32,7 @@
     "winbox": "0.2.6"
   },
   "devDependencies": {
-    "@playwright/test": "1.34.1",
+    "@playwright/test": "1.34.2",
     "@sveltejs/vite-plugin-svelte": "2.3.0",
     "@tsconfig/svelte": "4.0.1",
     "@types/github-url-to-object": "^4.0.1",
