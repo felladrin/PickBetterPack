@@ -29,7 +29,7 @@
     "svelte-i18n": "3.6.0",
     "unique-random-array": "3.0.0",
     "vanilla-lazyload": "17.8.3",
-    "winbox": "0.2.72"
+    "winbox": "0.2.73"
   },
   "devDependencies": {
     "@playwright/test": "1.35.1",
