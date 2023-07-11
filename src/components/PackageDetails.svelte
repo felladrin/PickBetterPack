@@ -97,24 +97,11 @@
             />
           {/if}
           <br />
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href={`https://snyk.io/test/npm/${packageSearchResult.package.name}`}
-          >
-            <img
-              on:error={handleImageError}
-              data-src={`https://snyk.io/test/npm/${packageSearchResult.package.name}/badge.svg`}
-              alt="Known Vulnerabilities"
-              class="lazy"
-            />
-          </a>
-          <LicenseBadge packageName={packageSearchResult.package.name} />
-          <br />
           <BundlephobiaBadge packageName={packageSearchResult.package.name} />
           <TypesAvailabilityBadge
             packageName={packageSearchResult.package.name}
           />
+          <LicenseBadge packageName={packageSearchResult.package.name} />
         </div>
       </div>
       <div class="row">
