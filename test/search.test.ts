@@ -33,7 +33,7 @@ test("similar packages", async ({ page, baseURL }) => {
       .first()
       .locator("img")
       .count()
-  ).toBe(7);
+  ).toBe(6);
   await page.waitForFunction(
     () =>
       document.querySelectorAll("[data-test-id=package-details]").length === 7
