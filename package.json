@@ -34,7 +34,7 @@
   "devDependencies": {
     "@playwright/test": "1.37.1",
     "@sveltejs/vite-plugin-svelte": "2.4.5",
-    "@tsconfig/svelte": "5.0.0",
+    "@tsconfig/svelte": "5.0.1",
     "@types/github-url-to-object": "^4.0.1",
     "@types/halfmoon": "1.0.2",
     "@types/winbox": "0.2.1",
