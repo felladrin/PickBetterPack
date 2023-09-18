@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "build-and-preview": "vite build && vite preview",
-    "test": "svelte-check && playwright test",
+    "test": "svelte-check && playwright install && playwright test",
     "postinstall": "esbuild svelte.config.ts --outfile=svelte.config.js"
   },
   "dependencies": {
