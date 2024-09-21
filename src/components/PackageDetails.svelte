@@ -27,7 +27,7 @@
 
   function getGithubContributorsImageUrl(repositoryUrl = "", maxImages = 0) {
     const matches = repositoryUrl.match(
-      "^(https|git)(://|@)([^/:]+)[/:]([^/:]+)/(.+)"
+      "^(https|git)(://|@)([^/:]+)[/:]([^/:]+)/(.+)",
     );
     const owner = matches[4];
     const repo = matches[5];
@@ -53,7 +53,7 @@
 
   function getGithubContributorsPageUrl(repositoryUrl = "") {
     const matches = repositoryUrl.match(
-      "^(https|git)(://|@)([^/:]+)[/:]([^/:]+)/(.+)"
+      "^(https|git)(://|@)([^/:]+)[/:]([^/:]+)/(.+)",
     );
     const owner = matches[4];
     const repo = matches[5];
@@ -61,23 +61,20 @@
   }
 </script>
 
-<details
-  class="collapse-panel"
-  data-test-id="package-details"
-  {open}
-  on:click={({ currentTarget }) => {
-    onTogglePanel(!currentTarget.hasAttribute("open"));
-  }}
-  on:keypress={() => {}}
->
-  <summary class="collapse-header">
+<details class="collapse-panel" data-test-id="package-details" {open}>
+  <summary
+    class="collapse-header"
+    on:click={({ currentTarget }) => {
+      onTogglePanel(!currentTarget.hasAttribute("open"));
+    }}
+  >
     <div class="container-fluid">
       <div class="row">
         <div class="col text-truncate d-inline-block w-300">
           <strong>{packageSearchResult.package.name}</strong>
           <span class="text-muted">
             {sanitizePackageDescription(
-              packageSearchResult.package.description
+              packageSearchResult.package.description,
             )}
           </span>
         </div>
@@ -110,7 +107,7 @@
             {#if packageSearchResult.package.links.repository && /github/i.test(packageSearchResult.package.links.repository)}
               <a
                 href={getGithubContributorsPageUrl(
-                  packageSearchResult.package.links.repository
+                  packageSearchResult.package.links.repository,
                 )}
                 target="_blank"
                 rel="noreferrer"
@@ -120,7 +117,7 @@
                   on:error={handleImageError}
                   data-src={getGithubContributorsImageUrl(
                     packageSearchResult.package.links.repository,
-                    12
+                    12,
                   )}
                   alt="Contributors"
                   class="lazy img-fluid"
@@ -130,7 +127,7 @@
               <br />
             {/if}
             {sanitizePackageDescription(
-              packageSearchResult.package.description
+              packageSearchResult.package.description,
             )}
             <br />
             <span class="badge-group mt-5" role="group">
@@ -149,7 +146,7 @@
                 rel="noreferrer"
                 class="badge badge-pill"
                 >{formatToRelativeTime(
-                  new Date(packageSearchResult.package.date)
+                  new Date(packageSearchResult.package.date),
                 )}
               </a>
             </span>

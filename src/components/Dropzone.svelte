@@ -49,11 +49,13 @@
 
 <div
   class="dropzone"
+  role="region"
   style="display: {dropZoneDisplayStyle};"
   on:dragenter={allowDrag}
   on:dragover={allowDrag}
   on:dragleave={hideDropZone}
-  on:drop={handleDrop}></div>
+  on:drop={handleDrop}
+></div>
 
 <style>
   .dropzone {
