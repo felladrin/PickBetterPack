@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Fa from "svelte-fa";
   import {
     faGitAlt,
@@ -6,7 +6,9 @@
     faGitlab,
   } from "@fortawesome/free-brands-svg-icons";
 
-  export let href = "#";
+  const { href = "#" } = $props<{
+    href?: string;
+  }>();
 </script>
 
 <a {href} target="_blank" rel="noreferrer" class="btn btn-sm" role="button">

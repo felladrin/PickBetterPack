@@ -1,7 +1,7 @@
 <script lang="ts">
   import { droppedPackageJsonContent } from "../stores/droppedPackageJsonContent";
 
-  let dropZoneDisplayStyle = "none";
+  let dropZoneDisplayStyle = $state("none");
 
   function showDropZone() {
     dropZoneDisplayStyle = "block";
@@ -45,16 +45,16 @@
   }
 </script>
 
-<svelte:window on:dragenter={handleDragEnter} on:drop={handleDrop} />
+<svelte:window ondragenter={handleDragEnter} ondrop={handleDrop} />
 
 <div
   class="dropzone"
   role="region"
   style="display: {dropZoneDisplayStyle};"
-  on:dragenter={allowDrag}
-  on:dragover={allowDrag}
-  on:dragleave={hideDropZone}
-  on:drop={handleDrop}
+  ondragenter={allowDrag}
+  ondragover={allowDrag}
+  ondragleave={hideDropZone}
+  ondrop={handleDrop}
 ></div>
 
 <style>

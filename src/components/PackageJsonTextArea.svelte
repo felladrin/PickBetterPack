@@ -1,4 +1,6 @@
-<script>
+<script lang="ts">
+  import { run } from 'svelte/legacy';
+
   import { getDependenciesFromPackage } from "../functions/getDependenciesFromPackage";
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { onMount } from "svelte";
@@ -10,11 +12,11 @@
   import stripJsonComments from "strip-json-comments";
   import { getRandomPackage } from "../functions/getRandomPackage";
 
-  let packageJsonAsString = JSON.stringify(packageJsonTemplate, null, 2);
+  let packageJsonAsString = $state(JSON.stringify(packageJsonTemplate, null, 2));
 
-  let hasError;
+  let hasError = $state();
 
-  let packageJsonAsObject = {};
+  let packageJsonAsObject = $state({});
 
   onMount(async () => {
     let packageJsonHash = getHashFromString(packageJsonAsString);
@@ -100,7 +102,7 @@
     if (content.length > 0) packageJsonAsString = content;
   });
 
-  $: {
+  run(() => {
     try {
       packageJsonAsObject = JSON.parse(stripJsonComments(packageJsonAsString));
       dependenciesFromPackage.set(
@@ -110,7 +112,7 @@
     } catch {
       hasError = true;
     }
-  }
+  });
 </script>
 
 <textarea

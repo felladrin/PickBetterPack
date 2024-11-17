@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Fa from "svelte-fa";
   import {
     faCommentDots,
@@ -15,7 +15,7 @@
   <button
     class="btn"
     type="button"
-    on:click={() => halfmoon.toggleModal("modal-language")}
+    onclick={() => halfmoon.toggleModal("modal-language")}
     data-toggle="tooltip"
     data-placement="right"
     data-title={$t("languageSelection")}
@@ -26,7 +26,7 @@
   <button
     class="btn"
     type="button"
-    on:click={() =>
+    onclick={() =>
       openWinBox({
         url: `https://bit.ly/32VpLfA`,
         title: `Feedback`,
@@ -54,7 +54,7 @@
   <button
     class="btn"
     type="button"
-    on:click={() => halfmoon.toggleDarkMode()}
+    onclick={() => halfmoon.toggleDarkMode()}
     data-test-id="toggle-dark-mode-button"
     data-toggle="tooltip"
     data-placement="right"

@@ -1,26 +1,30 @@
-<script>
+<script lang="ts">
   import { handleImageError } from "../../functions/handleImageError";
   import { openWinBox } from "../../functions/openWinBox";
-  import { afterUpdate } from "svelte";
   import { lazyLoad } from "../../constants/lazyLoad";
 
-  export let packageName = "npm";
+  const { packageName = "npm" } = $props<{
+    packageName?: string;
+  }>();
 
-  afterUpdate(() => lazyLoad.update());
+  $effect(() => lazyLoad.update());
 </script>
 
 <a
   href="https://npmcharts.com/compare/{packageName}?minimal=true"
   target="_blank"
   rel="noreferrer"
-  on:click|preventDefault={({ currentTarget }) =>
+  onclick={(event) => {
+    event.preventDefault();
+
     openWinBox({
-      url: currentTarget.href,
+      url: event.currentTarget.href,
       title: `${packageName}'s downloads chart`,
-    })}
+    });
+  }}
 >
   <img
-    on:error={handleImageError}
+    onerror={handleImageError}
     data-src="https://badgen.net/npm/dm/{packageName}"
     alt="Monthly Downloads"
     class="lazy"

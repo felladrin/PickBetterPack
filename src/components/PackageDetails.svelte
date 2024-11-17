@@ -8,7 +8,6 @@
   import halfmoon from "halfmoon";
   import { copyTextToClipboard } from "../functions/copyTextToClipboard";
   import { handleImageError } from "../functions/handleImageError";
-  import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
   import HomeButton from "./buttons/HomeButton.svelte";
   import RepositoryButton from "./buttons/RepositoryButton.svelte";
@@ -19,11 +18,13 @@
   import GitHubStarsBadge from "./badges/GitHubStarsBadge.svelte";
   import BundlephobiaBadge from "./badges/BundlephobiaBadge.svelte";
 
-  export let packageSearchResult: SearchResult;
-  export let open = false;
-  export let onTogglePanel: (wasClosedWhenToggled: boolean) => void = () => {};
+  const { packageSearchResult, open = false, onTogglePanel = () => {} } = $props<{
+    packageSearchResult: SearchResult;
+    open?: boolean;
+    onTogglePanel?: (wasClosedWhenToggled: boolean) => void;
+  }>();
 
-  afterUpdate(() => lazyLoad.update());
+  $effect(() => lazyLoad.update());
 
   function getGithubContributorsImageUrl(repositoryUrl = "", maxImages = 0) {
     const matches = repositoryUrl.match(
@@ -64,7 +65,7 @@
 <details class="collapse-panel" data-test-id="package-details" {open}>
   <summary
     class="collapse-header"
-    on:click={({ currentTarget }) => {
+    onclick={({ currentTarget }) => {
       onTogglePanel(!currentTarget.hasAttribute("open"));
     }}
   >
@@ -114,7 +115,7 @@
                 class="text-decoration-none"
               >
                 <img
-                  on:error={handleImageError}
+                  onerror={handleImageError}
                   data-src={getGithubContributorsImageUrl(
                     packageSearchResult.package.links.repository,
                     12,
@@ -156,16 +157,16 @@
       <div class="row">
         <div class="col d-flex justify-content-center">
           <NpmButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10" />
+          <span class="ml-10" ></span>
           {#if packageSearchResult.package.links.homepage && !packageSearchResult.package.links.homepage.includes(packageSearchResult.package.links.repository ?? "#readme")}
             <HomeButton href={packageSearchResult.package.links.homepage} />
-            <span class="ml-10" />
+            <span class="ml-10" ></span>
           {/if}
           {#if packageSearchResult.package.links.repository}
             <RepositoryButton
               href={packageSearchResult.package.links.repository}
             />
-            <span class="ml-10" />
+            <span class="ml-10" ></span>
           {/if}
           <RunkitButton packageName={packageSearchResult.package.name} />
         </div>
@@ -180,7 +181,7 @@
               type="text"
               class="form-control"
               value={`npm i ${packageSearchResult.package.name}`}
-              on:click={({ currentTarget }) => {
+              onclick={({ currentTarget }) => {
                 currentTarget.select();
                 if (navigator.clipboard) {
                   copyTextToClipboard(currentTarget.value);
@@ -201,7 +202,7 @@
       <div class="row mt-10">
         <div class="col d-flex justify-content-center">
           <OpenReadmeButton packageName={packageSearchResult.package.name} />
-          <span class="ml-10" />
+          <span class="ml-10" ></span>
           <ExploreFilesButton packageName={packageSearchResult.package.name} />
         </div>
       </div>

@@ -1,9 +1,11 @@
-<script>
+<script lang="ts">
   import { openWinBox } from "../../functions/openWinBox";
   import Fa from "svelte-fa";
   import { faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
-  export let packageName = "npm";
+  const { packageName = "npm" } = $props<{
+    packageName?: string;
+  }>();
 </script>
 
 <a
@@ -12,11 +14,14 @@
   rel="noreferrer"
   class="btn btn-sm"
   role="button"
-  on:click|preventDefault={({ currentTarget }) =>
+  onclick={(event) => {
+    event.preventDefault();
+
     openWinBox({
-      url: currentTarget.href,
+      url: event.currentTarget.href,
       title: `Try ${packageName}`,
-    })}
+    });
+  }}
 >
   <Fa icon={faPlayCircle} />
 </a>

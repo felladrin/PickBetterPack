@@ -1,8 +1,10 @@
-<script>
+<script lang="ts">
   import Fa from "svelte-fa";
   import { faNpm } from "@fortawesome/free-brands-svg-icons";
 
-  export let packageName = "npm";
+  const { packageName = "npm" } = $props<{
+    packageName?: string;
+  }>();
 </script>
 
 <a
