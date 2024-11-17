@@ -2,25 +2,26 @@
   import { analyzePackage } from "../../functions/analyzePackage";
   import { handleImageError } from "../../functions/handleImageError";
   import { openWinBox } from "../../functions/openWinBox";
-  import { afterUpdate } from "svelte";
   import { lazyLoad } from "../../constants/lazyLoad";
   import { t } from "svelte-i18n";
 
-  export let packageName = "npm";
+  const { packageName = "npm" } = $props<{
+    packageName?: string;
+  }>();
 
-  afterUpdate(() => lazyLoad.update());
+  $effect(() => lazyLoad.update());
 
-  async function handleClick({
-    currentTarget,
-  }: {
-    currentTarget: EventTarget & HTMLAnchorElement;
-  }) {
+  async function handleClick(event: MouseEvent) {
+    event.preventDefault();
+
+    const currentTarget = event.currentTarget as HTMLAnchorElement;
+
     const openDefaultLicensesPage = () => {
       openWinBox({
         url: currentTarget.href,
         title: $t("licenses"),
       });
-    }
+    };
 
     try {
       const { default: packageLicenseTypes } = await import(
@@ -34,12 +35,12 @@
       if (licenses.length === 0) {
         openDefaultLicensesPage();
       } else {
-        licenses.forEach((licenseName) => {
+        for (const licenseName of licenses) {
           openWinBox({
             url: `https://spdx.org/licenses/${licenseName}.html#licenseText`,
             title: $t("licenseName", { values: { licenseName } }),
           });
-        });
+        }
       }
     } catch {
       openDefaultLicensesPage();
@@ -52,10 +53,10 @@
   title={$t("clickToReadAboutLicense")}
   target="_blank"
   rel="noreferrer"
-  on:click|preventDefault={handleClick}
+  onclick={handleClick}
 >
   <img
-    on:error={handleImageError}
+    onerror={handleImageError}
     data-src="https://badgen.net/npm/license/{packageName}"
     alt={$t("license")}
     class="lazy"

@@ -1,14 +1,13 @@
-<script>
+<script lang="ts">
   import PackageJsonTextArea from "./PackageJsonTextArea.svelte";
   import DependenciesTable from "./DependenciesTable.svelte";
   import Dropzone from "./Dropzone.svelte";
   import FloatingSideButtons from "./buttons/FloatingSideButtons.svelte";
   import SelectLocaleModal from "./LanguageSelectionModal.svelte";
-  import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
   import { t } from "svelte-i18n";
 
-  afterUpdate(() => lazyLoad.update());
+  $effect(() => lazyLoad.update());
 </script>
 
 <Dropzone />

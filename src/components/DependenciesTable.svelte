@@ -13,7 +13,7 @@
     import("../types/npms").SearchResult,
     boolean
   >();
-  let dependencyPerSimilarPackagesDisplayedMap = {};
+  const dependencyPerSimilarPackagesDisplayedMap = $state({});
 </script>
 
 {#if Object.keys($dependenciesFromPackage).length > 0}
@@ -88,7 +88,7 @@
                       <button
                         class="btn btn-sm btn-block"
                         type="button"
-                        on:click={() =>
+                        onclick={() =>
                           (dependencyPerSimilarPackagesDisplayedMap[
                             dependencyName
                           ] =

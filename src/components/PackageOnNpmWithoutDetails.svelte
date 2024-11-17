@@ -1,12 +1,13 @@
-<script>
+<script lang="ts">
   import { handleImageError } from "../functions/handleImageError";
-  import { afterUpdate } from "svelte";
   import { lazyLoad } from "../constants/lazyLoad";
 
-  afterUpdate(() => lazyLoad.update());
+  $effect(() => lazyLoad.update());
 
-  export let packageName = "npm";
-  export let open = false;
+  const { packageName = "npm", open = false } = $props<{
+    packageName?: string;
+    open?: boolean;
+  }>();
 </script>
 
 <details class="collapse-panel" {open}>
@@ -26,7 +27,7 @@
       href={`https://www.npmjs.com/package/${packageName}`}
     >
       <img
-        on:error={handleImageError}
+        onerror={handleImageError}
         data-src={`https://badgen.net/npm/v/${packageName}`}
         alt="NPM Page"
         class="lazy"
