@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { run } from 'svelte/legacy';
-
   import { getDependenciesFromPackage } from "../functions/getDependenciesFromPackage";
   import { dependenciesFromPackage } from "../stores/dependenciesFromPackage";
   import { onMount } from "svelte";
@@ -102,11 +100,12 @@
     if (content.length > 0) packageJsonAsString = content;
   });
 
-  run(() => {
+  $effect(() => {
     try {
-      packageJsonAsObject = JSON.parse(stripJsonComments(packageJsonAsString));
+      const parsed = JSON.parse(stripJsonComments(packageJsonAsString));
+      packageJsonAsObject = parsed;
       dependenciesFromPackage.set(
-        getDependenciesFromPackage(packageJsonAsObject)
+        getDependenciesFromPackage(parsed)
       );
       hasError = false;
     } catch {
