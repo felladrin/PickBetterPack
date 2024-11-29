@@ -11,7 +11,7 @@ export async function getRandomPackage() {
   const searchResponse = await yarnNpmApi
     .get("-/v1/search", {
       searchParams: {
-        text: `keywords:${getRandomKeyword()},${getRandomKeyword()}`,
+        text: `keywords:${getRandomKeyword()}`,
         size: 3,
       },
     })
