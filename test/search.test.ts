@@ -8,7 +8,7 @@ test("similar packages", async ({ page, baseURL }) => {
         name: "my-awesome-package",
         version: "1.0.0",
         dependencies: {
-          npm: "^8.1.2",
+          "create-pubsub": "^1.4.0",
         },
       },
       null,
@@ -20,7 +20,7 @@ test("similar packages", async ({ page, baseURL }) => {
       "[data-shepherd-step-id='package-json-textarea'] .shepherd-footer .shepherd-button"
     )
     .click();
-  await page.locator("strong", { hasText: "npm" }).first().waitFor();
+  await page.locator("strong", { hasText: "create-pubsub" }).first().waitFor();
   await page
     .locator("[data-test-id=package-details]")
     .first()
