@@ -31,7 +31,7 @@ export async function getSimilarPackages(packageName = "") {
     .filter(
       (result) =>
         result.total >= 5 &&
-        hasEnoughScore(result.objects[result.objects.length - 1])
+        hasEnoughScore(result.results[result.results.length - 1])
     )
     .sort((a, b) => a.total - b.total)
     .slice(0, 3);
@@ -133,7 +133,7 @@ export async function getSimilarPackages(packageName = "") {
   const mergedSearchResults = searchResponses
     .filter((result) => result.total >= 5)
     .reduce<SearchResult[]>(
-      (results, current) => [...results, ...(current.objects ?? [])],
+      (results, current) => [...results, ...(current.results ?? [])],
       []
     );
 
