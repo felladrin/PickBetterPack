@@ -38,7 +38,7 @@
     "@types/github-url-to-object": "^4.0.1",
     "@types/halfmoon": "^1.0.5",
     "@types/winbox": "^0.2.5",
-    "esbuild": "^0.24.0",
+    "esbuild": "^0.25.0",
     "git-last-commit": "^1.0.1",
     "github-url-to-object": "^4.0.6",
     "helper-git-hash": "^1.0.0",
