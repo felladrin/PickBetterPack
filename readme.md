@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://pickbetterpack.com/"><img src="./public/images/logo-dark-mode.png" height="128"></a><br>
-  <p align="center">Discover similar packages from your <em>package.json</em> dependencies at <b><a href="https://pickbetterpack.com/">pickbetterpack.com</a></b><p>
+  <p align="center">Discover similar packages from your <em>package.json</em> dependencies.<p>
 </div>
 
 ![Divider](https://i.imgur.com/waxVImv.png)
